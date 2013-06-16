@@ -3,12 +3,14 @@
 (add-to-list 'package-archives
 	     '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages") t)
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
 ;; Grab the following packages if not already installed
 (when (not (package-installed-p 'nrepl))
   (package-install 'nrepl))
+(when (not (package-installed-p 'projectile))
+  (package-install 'projectile))
 
 ;;When uncommented, it gets rid of syntax highlighting:
 ;;(add-to-list 'auto-mode-alist '("\\.org\\" . org-mode))

@@ -11,6 +11,14 @@
   (package-install 'nrepl))
 (when (not (package-installed-p 'projectile))
   (package-install 'projectile))
+(when (not (package-installed-p 'eldoc))
+  (package-install 'eldoc))
+(when (not (package-installed-p 'paredit))
+  (package-install 'paredit))
+(when (not (package-installed-p 'clojure-mode))
+  (package-install 'clojure-mode))
+(when (not (package-installed-p 'rainbow-delimiters))
+  (package-install 'rainbow-delimiters))
 
 ;;When uncommented, it gets rid of syntax highlighting:
 ;;(add-to-list 'auto-mode-alist '("\\.org\\" . org-mode))

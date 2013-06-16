@@ -1,0 +1,37 @@
+##
+# This is the Git config file
+##
+
+[user]
+	name = Daniel Dyba
+	email = daniel.dyba@gmail.com
+[color]
+	diff = auto
+	branch = auto
+	interactive = auto
+	ui = auto
+[alias]
+	co = checkout
+	b = branch
+	s = status
+	c = commit
+	m = merge
+	l = log
+	a = add
+	f = fetch
+	ps = push
+	pl = pull
+	sl = shortlog
+	cf = config
+	cp = cherry-pick
+	mg = merge
+	d = difftool
+	cl = clone
+	rv = remote -v
+	r = remote
+[core]
+	editor = mvim -f
+[diff]
+	tool = gvimdiff
+[difftool]
+	prompt = false

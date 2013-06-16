@@ -37,6 +37,8 @@
 
 ;;(setq line-number-display-limit-width 15)
 
+;; Remove the default splash screen
+(setq inhibit-startup-message t)
 ;; Don't add any comments to the *scratch* buffer
 (setq initial-scratch-message nil)
 
@@ -46,11 +48,6 @@
 
 ;; Require text files end in a newline
 (setq require-final-newline 't)
-
-;; Add the SML/NJ directory to the Emacs path
-(setenv "PATH" (concat "/usr/local/Cellar/smlnj/110.75/libexec/bin:"
-                       (getenv "PATH")))
-(setq exec-path (cons "/usr/local/Cellar/smlnj/110.75/libexec/bin" exec-path))
 
 ;; Autoload the scss-mode file
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/modes/scss-mode"))
@@ -70,20 +67,55 @@
   (ANY 2)
   (context 2))
 
-(defun sml-mode-hook-defaults () "Local defaults for SML mode"
-  (setq sml-indent-level 4)
-  (setq indent-tabs-mode nil)
-  (define-key sml-mode-map "\C-cd" 'sml-cd))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; SML Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Add the SML/NJ directory to the Emacs path
+(setenv "PATH" (concat "/usr/local/Cellar/smlnj/110.75/libexec/bin:"
+                       (getenv "PATH")))
+(setq exec-path (cons "/usr/local/Cellar/smlnj/110.75/libexec/bin" exec-path))
+
+;; Have Emacs automatically place the buffer in SML mode whenever it sees
+;; a file containing the .sml extension
+(add-to-list 'auto-mode-alist '("\\.\\(sml\\|sig\\)\\'" . sml-mode))
+
+(defun sml-mode-hook-defaults ()
+  "Global defaults for SML mode"
+  (setq sml-indent-level 4) ; indent level should be 4
+  (setq indent-tabs-mode nil) ; never indent with tabs
+  ; Bind the key C-c C-s to M-x sml-run
+  (define-key sml-run "\C-c\C-s" 'sml-run))
+
+(defun inferior-sml-mode-hook-defaults ()
+  "Global defaults for the SML buffer"
+  (define-key inferior-sml-mode-map "\C-cd" 'sml-prog-proc-chdir))
+
 (add-hook 'sml-mode-hook 'sml-mode-hook-defaults)
 
-(defun inf-sml-mode-hook-defaults () "Local defaults for inferior SML mode"
+(defun inf-sml-mode-hook-defaults ()
+  "Local defaults for inferior SML mode"
   (define-key inferior-sml-mode-map "\C-cd" 'sml-cd))
+
+;; Set defaults when loading SML files
+(add-hook 'sml-mode-hook 'sml-mode-hook-defaults)
+(add-hook 'inferior-sml-mode-hook 'inferior-sml-mode-hook-defaults)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ParEdit Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Turning on Paredit mode
 (defun enable-paredit () (paredit-mode t))
+
+;; Paredit hooks
 (add-hook 'clojure-mode-hook 'enable-paredit)
 (add-hook 'emacs-lisp-mode-hook 'enable-paredit)
 (add-hook 'eval-expression-minibuffer-setup-hook 'enable-paredit)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ElDoc Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Requiring ElDoc
 (require 'eldoc)

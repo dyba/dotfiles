@@ -1,8 +1,6 @@
-filetype off
-
 set nocompatible
+filetype off " Turn this off to address an Ubuntu quirk
 
-syntax on " Turn on syntax highlighting by default
 
 set runtimepath+=~/.vim/bundle/vundle
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -18,14 +16,23 @@ set guifont=Menlo\ Regular\:h16
 " to the left or right, respectively
 "set shiftwidth=2
 
-" Set relative numbering
-set relativenumber
+" Set line numbers
+set number
 
 " Turn highlighted search
 set hls
 
 " Follow the cursor with a horizontal line across the screen
 set cursorline
+
+" Function to toggle between relative and absolute line numbering
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
 
 " Launching MacVim will show a steelblue horizontal line
 " Launching vim will show a lightgray horizontal line
@@ -47,7 +54,10 @@ Bundle 'briancollins/vim-jst'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'majutsushi/tagbar'
 Bundle 'kien/ctrlp.vim'
+Bundle 'kchmck/vim-coffee-script'
 
+syntax on " Turn on syntax highlighting by default
+filetype on
 filetype indent on
 filetype plugin indent on
 
@@ -86,6 +96,10 @@ nnoremap <leader>sg :source $MYGVIMRC<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " Source your .vimrc file
 nnoremap <leader>sv :source $MYVIMRC<cr>
+" Toggle between absolute numbers and relative numbers
+nnoremap <leader>n :call NumberToggle()<cr>
+" Toggle between displaying highlighted results
+nnoremap <leader>hl :set hlsearch!<cr>
 
 let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
@@ -119,3 +133,5 @@ let g:ctrlp_custom_ignore = {
 
 " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set noshowmode
+
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 softtabstop=2 expandtab

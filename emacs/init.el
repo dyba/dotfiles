@@ -19,6 +19,8 @@
   (package-install 'clojure-mode))
 (when (not (package-installed-p 'rainbow-delimiters))
   (package-install 'rainbow-delimiters))
+(when (not (package-installed-p 'color-theme-solarized))
+  (package-install 'color-theme-solarized))
 
 ;;When uncommented, it gets rid of syntax highlighting:
 ;;(add-to-list 'auto-mode-alist '("\\.org\\" . org-mode))

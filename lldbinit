@@ -1,0 +1,8 @@
+command alias bls breakpoint list
+command alias bfl breakpoint set -f %1 -l %2
+command alias wv watchpoint set variable %1
+command alias wls watchpoint list
+command alias wd watchpoint delete %1
+command alias wm watchpoint set expression -- %1
+command alias wc watchpoint modify -c %1
+command alias ls source list -b

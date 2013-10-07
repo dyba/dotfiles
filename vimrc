@@ -132,8 +132,8 @@ let g:ctrlp_custom_ignore = {
   \ 'dir': 'node_modules$'
   \ }
 
-"============== NerdTree Settings ================"
-map <leader>n :NERDTreeToggle<cr>
+"============== NERDTree Settings ================"
+nnoremap <C-n> :NERDTreeToggle<cr>
 
 " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set noshowmode

@@ -55,6 +55,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'majutsushi/tagbar'
 Bundle 'kien/ctrlp.vim'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'scrooloose/nerdtree'
 
 syntax on " Turn on syntax highlighting by default
 filetype on
@@ -131,7 +132,11 @@ let g:ctrlp_custom_ignore = {
   \ 'dir': 'node_modules$'
   \ }
 
+"============== NerdTree Settings ================"
+map <leader>n :NERDTreeToggle<cr>
+
 " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set noshowmode
 
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.rb setl shiftwidth=2 softtabstop=2 expandtab

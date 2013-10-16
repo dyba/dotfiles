@@ -46,6 +46,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
+# The editor to use when opening a bundled gem
+export BUNDLER_EDITOR='mvim'
+
 # Add .rbenv to your PATH
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"

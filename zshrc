@@ -52,6 +52,7 @@ export BUNDLER_EDITOR='mvim'
 # Add .rbenv to your PATH
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 
 # Enable shims and autocompletion
 eval "$(rbenv init -)"

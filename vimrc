@@ -56,6 +56,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'kien/ctrlp.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/nerdtree'
+Bundle 'mileszs/ack.vim'
 
 syntax on " Turn on syntax highlighting by default
 filetype on
@@ -141,3 +142,4 @@ set noshowmode
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.rb setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.rake setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost Rakefile setl shiftwidth=2 softtabstop=2 expandtab

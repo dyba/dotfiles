@@ -7,20 +7,17 @@
 (package-initialize)
 
 ;; Grab the following packages if not already installed
-(when (not (package-installed-p 'nrepl))
-  (package-install 'nrepl))
-(when (not (package-installed-p 'projectile))
-  (package-install 'projectile))
-(when (not (package-installed-p 'eldoc))
-  (package-install 'eldoc))
-(when (not (package-installed-p 'paredit))
-  (package-install 'paredit))
-(when (not (package-installed-p 'clojure-mode))
-  (package-install 'clojure-mode))
-(when (not (package-installed-p 'rainbow-delimiters))
-  (package-install 'rainbow-delimiters))
-(when (not (package-installed-p 'color-theme-solarized))
-  (package-install 'color-theme-solarized))
+(defvar my-packages '(nrepl
+                      projectile
+                      eldoc
+                      paredit
+                      clojure-mode
+                      rainbow-delimiters))
+
+(dolist (p my-packages)
+  (unless (package-installed-p p)
+    (package-refresh-contents)
+    (package-install p)))
 
 ;;When uncommented, it gets rid of syntax highlighting:
 ;;(add-to-list 'auto-mode-alist '("\\.org\\" . org-mode))
@@ -42,7 +39,7 @@
 (add-hook 'nrepl-mode-hook 'paredit-mode)
 (add-hook 'nrepl-mode-hook 'rainbow-delimiters-mode)
 
-(load-theme 'solarized-dark t)
+(load-theme 'solarized-light t)
 
 ;; Load the path in which you store rbenv
 ;; (setenv "PATH" (concat "/usr/local/bin" ":" (getenv "PATH")))
@@ -66,9 +63,13 @@
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 
-;; For better indentation for Compojure macros
 (require 'clojure-mode)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Clojure Mode Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; For better indentation for Compojure macros
 (define-clojure-indent
   (defroutes 'defun)
   (GET 2)
@@ -78,6 +79,9 @@
   (HEAD 2)
   (ANY 2)
   (context 2))
+
+;; 'Always 2 spaces' indentation
+(setq clojure-defun-style-default-indent t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; SML Configuration

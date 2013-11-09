@@ -78,7 +78,11 @@
   (DELETE 2)
   (HEAD 2)
   (ANY 2)
-  (context 2))
+
+  ;; For better indentation of speclj
+  (it 'defun)
+  (describe 'defun)
+  (context 'defun))
 
 ;; 'Always 2 spaces' indentation
 (setq clojure-defun-style-default-indent t)

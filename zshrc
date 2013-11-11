@@ -59,3 +59,4 @@ eval "$(rbenv init -)"
 
 # Aliases
 alias rake="noglob bundled_rake" # This is a workaround with rake when using Zsh: https://github.com/robbyrussell/oh-my-zsh/issues/433
+alias prettify_json="json_reformat" # Run 'brew install yajl' to get the `json_reformat` command

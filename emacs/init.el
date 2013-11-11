@@ -33,6 +33,11 @@
 (require 'projectile)
 (projectile-global-mode)
 
+;; Highlight Parentheses
+(require 'paren)
+(setq show-paren-style 'parenthesis)
+(show-paren-mode +1)
+
 ;; Enable ElDoc in Clojure buffers
 (add-hook 'nrepl-interaction-mode-hook
           'nrepl-turn-on-eldoc-mode)

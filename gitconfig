@@ -30,8 +30,19 @@
 	rv = remote -v
 	r = remote
 [core]
-	editor = mvim -f
+	editor = vim -f
 [diff]
-	tool = gvimdiff
+	tool = Kaleidoscope
 [difftool]
+	prompt = false
+[push]
+	default = simple
+[merge]
+	tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[mergetool]
 	prompt = false

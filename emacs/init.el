@@ -12,7 +12,8 @@
                       eldoc
                       paredit
                       clojure-mode
-                      rainbow-delimiters))
+                      rainbow-delimiters
+		      color-theme-solarized))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)

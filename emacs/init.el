@@ -150,7 +150,7 @@
  'paredit-backward-delete
  'paredit-close-round)
 
-(defun enable-eldoc-defaults
+(defun enable-eldoc-defaults ()
   (turn-on-eldoc-mode)
   (eldoc-add-command
    'paredit-backward-delete
@@ -170,16 +170,15 @@
     (newline arg)
     (indent-according-to-mode)))
 
-(defun enable-lisp-defaults
-  (lambda ()
-    (paredit-mode t)
-    (turn-on-eldoc-mode)
-    (eldoc-add-command
-     'paredit-backward-delete
-     'paredit-close-round)
-    (local-set-key (kbd "RET") 'electrify-return-if-match)
-    (eldoc-add-command 'electrify-return-if-match)
-    (show-paren-mode t)))
+(defun enable-lisp-defaults ()
+  (paredit-mode t)
+  (turn-on-eldoc-mode)
+  (eldoc-add-command
+   'paredit-backward-delete
+   'paredit-close-round)
+  (local-set-key (kbd "RET") 'electrify-return-if-match)
+  (eldoc-add-command 'electrify-return-if-match)
+  (show-paren-mode t))
 
 (add-hook 'emacs-lisp-mode-hook 'enable-lisp-defaults)
 (add-hook 'clojure-mode-hook 'enable-lisp-defaults)

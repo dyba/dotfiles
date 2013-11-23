@@ -7,7 +7,9 @@
 (package-initialize)
 
 ;; Grab the following packages if not already installed
-(defvar my-packages '(nrepl
+(defvar my-packages '(pkg-info
+		      dash
+		      cider
                       projectile
                       eldoc
                       paredit
@@ -39,10 +41,10 @@
 (show-paren-mode +1)
 
 ;; Enable ElDoc in Clojure buffers
-(add-hook 'nrepl-interaction-mode-hook
-          'nrepl-turn-on-eldoc-mode)
-(add-hook 'nrepl-mode-hook 'paredit-mode)
-(add-hook 'nrepl-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'cider-mode-hook
+          'cider-turn-on-eldoc-mode)
+(add-hook 'cider-repl-mode-hook 'paredit-mode)
+(add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 
 (load-theme 'solarized-light t)
 

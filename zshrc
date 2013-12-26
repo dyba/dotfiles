@@ -51,6 +51,7 @@ export BUNDLER_EDITOR='mvim'
 
 # Add .rbenv to your PATH
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
@@ -61,3 +62,6 @@ eval "$(rbenv init -)"
 # Aliases
 alias rake="noglob bundled_rake" # This is a workaround with rake when using Zsh: https://github.com/robbyrussell/oh-my-zsh/issues/433
 alias prettify_json="json_reformat" # Run 'brew install yajl' to get the `json_reformat` command
+
+# OPAM configuration
+. /Users/ddyba/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

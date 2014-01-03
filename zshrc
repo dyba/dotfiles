@@ -50,11 +50,11 @@ source $ZSH/oh-my-zsh.sh
 export BUNDLER_EDITOR='mvim'
 
 # Add .rbenv to your PATH
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-export PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
+export PATH=$HOME/.rbenv/bin:$PATH
+export PATH=$HOME/bin:$PATH
+export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
 
 # Enable shims and autocompletion
 eval "$(rbenv init -)"

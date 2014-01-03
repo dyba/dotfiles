@@ -1,6 +1,6 @@
 set nocompatible
 filetype off " Turn this off to address an Ubuntu quirk
-
+filetype plugin indent off
 
 set runtimepath+=~/.vim/bundle/vundle
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -57,11 +57,13 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/nerdtree'
 Bundle 'mileszs/ack.vim'
+Bundle 'ervandew/supertab'
+Bundle 'jnwhiteh/vim-golang'
 
-syntax on " Turn on syntax highlighting by default
 filetype on
 filetype indent on
 filetype plugin indent on
+syntax on " Turn on syntax highlighting by default
 
 " Easier navigation for text that wraps in a single line
 map <A-DOWN> gj
@@ -149,3 +151,6 @@ au BufNewFile,BufReadPost *.erb setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.md setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Podfile setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.yml setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufRead *.go set noexpandtab tabstop=4 shiftwidth=4
+
+au FileType go au BufWritePre <buffer> Fmt

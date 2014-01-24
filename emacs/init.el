@@ -16,7 +16,8 @@
                       clojure-mode
                       rainbow-delimiters
 		      color-theme-solarized
-		      tuareg))
+		      tuareg
+		      elixir-mode))
 (dolist (p my-packages)
   (unless (package-installed-p p)
     (package-refresh-contents)
@@ -144,12 +145,11 @@
 
 ;; 'Always 2 spaces' indentation
 (setq clojure-defun-style-default-indent t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Cider Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(set cider-repl-result-prefix ";; =>")
-(set cider-interactive-eval-result-prefix ";; =>")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; SML Configuration

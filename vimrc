@@ -59,6 +59,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'mileszs/ack.vim'
 Bundle 'ervandew/supertab'
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'elixir-lang/vim-elixir'
 
 filetype on
 filetype indent on

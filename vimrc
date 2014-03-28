@@ -145,6 +145,7 @@ set noshowmode
 
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.rb setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.liquid setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.rake setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Rakefile setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.js setl shiftwidth=4 softtabstop=4 expandtab

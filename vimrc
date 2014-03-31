@@ -155,6 +155,7 @@ au BufNewFile,BufReadPost *.md setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Podfile setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.yml setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.json setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.jade setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.scss setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufRead *.go set noexpandtab tabstop=4 shiftwidth=4
 

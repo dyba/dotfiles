@@ -150,6 +150,7 @@ au BufNewFile,BufReadPost *.rake setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Rakefile setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.js setl shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufReadPost *.html setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.php setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.erb setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.md setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Podfile setl shiftwidth=2 softtabstop=2 expandtab
@@ -157,6 +158,8 @@ au BufNewFile,BufReadPost *.yml setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.json setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.jade setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.scss setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.xml setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.xsd setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufRead *.go set noexpandtab tabstop=4 shiftwidth=4
 
 au FileType go au BufWritePre <buffer> Fmt

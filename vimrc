@@ -61,6 +61,7 @@ Bundle 'ervandew/supertab'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'mattn/emmet-vim'
+Bundle 'mustache/vim-mustache-handlebars'
 
 filetype on
 filetype indent on
@@ -116,6 +117,9 @@ colorscheme solarized
 "================= Tagbar Settings ==================="
 nnoremap <leader>tbt :TagbarToggle<cr>
 
+"================= Mustache Settings ==================="
+let g:mustache_abbreviations = 1
+
 "================= CtrlP Settings ==================="
 nnoremap <leader>. :CtrlP<cr>
 nnoremap <leader>cc :CtrlPClearCache<cr>
@@ -151,6 +155,7 @@ au BufNewFile,BufReadPost Rakefile setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.js setl shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufReadPost *.html setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.php setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.hbs setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.erb setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.md setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Podfile setl shiftwidth=2 softtabstop=2 expandtab
@@ -160,6 +165,7 @@ au BufNewFile,BufReadPost *.jade setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.scss setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.xml setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.xsd setl shiftwidth=2 softtabstop=2 expandtab
-au BufNewFile,BufRead *.go set noexpandtab tabstop=4 shiftwidth=4
+au BufNewFile,BufReadPost *.go set noexpandtab tabstop=4 shiftwidth=4
+au BufNewFile,BufReadPost *.css setl shiftwidth=2 softtabstop=2 expandtab
 
 au FileType go au BufWritePre <buffer> Fmt

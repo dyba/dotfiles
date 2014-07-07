@@ -55,6 +55,7 @@ export PATH=$HOME/bin:$PATH
 export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
+# export PATH=$HOME/bin/AWS-ElasticBeanstalk-CLI-2.6.0/eb/macosx/python2.7:$PATH # Fix to check for python3
 
 # Enable shims and autocompletion
 eval "$(rbenv init -)"
@@ -65,3 +66,10 @@ alias prettify_json="json_reformat" # Run 'brew install yajl' to get the `json_r
 
 # OPAM configuration
 . /Users/ddyba/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# Go configuration
+export GOPATH=$HOME/Code/go
+export PATH=$PATH:$GOPATH/bin
+
+# added by travis gem
+[ -f /Users/ddyba/.travis/travis.sh ] && source /Users/ddyba/.travis/travis.sh

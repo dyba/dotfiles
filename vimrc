@@ -62,6 +62,7 @@ Bundle 'jnwhiteh/vim-golang'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'mattn/emmet-vim'
 Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'digitaltoad/vim-jade'
 
 filetype on
 filetype indent on
@@ -119,6 +120,14 @@ nnoremap <leader>tbt :TagbarToggle<cr>
 
 "================= Mustache Settings ==================="
 let g:mustache_abbreviations = 1
+
+"================= Mustache Settings ==================="
+let g:user_emmet_settings = {
+			\ 'erb' : {
+			\   'extends' : 'html'
+			\ }
+			\}
+
 
 "================= CtrlP Settings ==================="
 nnoremap <leader>. :CtrlP<cr>

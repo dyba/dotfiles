@@ -158,14 +158,14 @@ set noshowmode
 
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.rb setl shiftwidth=2 softtabstop=2 expandtab
-au BufNewFile,BufReadPost *.liquid setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.liquid setl shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufReadPost *.rake setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Rakefile setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.js setl shiftwidth=4 softtabstop=4 expandtab
-au BufNewFile,BufReadPost *.html setl shiftwidth=2 softtabstop=2 expandtab
-au BufNewFile,BufReadPost *.php setl shiftwidth=2 softtabstop=2 expandtab
-au BufNewFile,BufReadPost *.hbs setl shiftwidth=2 softtabstop=2 expandtab
-au BufNewFile,BufReadPost *.erb setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.html setl shiftwidth=4 softtabstop=4 expandtab
+au BufNewFile,BufReadPost *.php setl shiftwidth=4 softtabstop=4 expandtab
+au BufNewFile,BufReadPost *.hbs setl shiftwidth=4 softtabstop=4 expandtab
+au BufNewFile,BufReadPost *.erb setl shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufReadPost *.md setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Podfile setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.yml setl shiftwidth=2 softtabstop=2 expandtab

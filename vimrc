@@ -63,6 +63,8 @@ Bundle 'elixir-lang/vim-elixir'
 Bundle 'mattn/emmet-vim'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'digitaltoad/vim-jade'
+Bundle 'groenewege/vim-less'
+Bundle 'lambdatoast/elm.vim'
 
 filetype on
 filetype indent on

@@ -52,7 +52,10 @@ export BUNDLER_EDITOR='mvim'
 # Add .rbenv to your PATH
 export PATH=$HOME/.rbenv/bin:$PATH
 export PATH=$HOME/bin:$PATH
+
+# Add Postgres app
 export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
+
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 # export PATH=$HOME/bin/AWS-ElasticBeanstalk-CLI-2.6.0/eb/macosx/python2.7:$PATH # Fix to check for python3
@@ -71,5 +74,16 @@ alias prettify_json="json_reformat" # Run 'brew install yajl' to get the `json_r
 export GOPATH=$HOME/Code/go
 export PATH=$PATH:$GOPATH/bin
 
+# Aliases
+alias rake="noglob bundled_rake" # This is a workaround with rake when using Zsh: https://github.com/robbyrussell/oh-my-zsh/issues/433
+alias prettify_json="json_reformat" # Run 'brew install yajl' to get the `json_reformat` command
+
 # added by travis gem
 [ -f /Users/ddyba/.travis/travis.sh ] && source /Users/ddyba/.travis/travis.sh
+
+# Eiffel configuration
+export ISE_EIFFEL=/Users/ddyba/Downloads/Eiffel_14.05
+export ISE_PLATFORM=macosx-x86-64
+
+# Enable Zsh completion for AWS
+source /usr/local/share/zsh/site-functions/_aws

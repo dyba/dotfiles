@@ -85,7 +85,7 @@
 ;; Erlang Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-to-list 'load-path "/usr/local/opt/erlang/lib/erlang/lib/tools-2.6.15/emacs")
+(add-to-list 'load-path "/usr/local/opt/erlang/lib/erlang/lib/tools-2.7/emacs")
 
 (add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))

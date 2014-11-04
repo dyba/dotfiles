@@ -2,7 +2,7 @@ set nocompatible
 filetype off " Turn this off to address an Ubuntu quirk
 filetype plugin indent off
 
-set runtimepath+=~/.vim/bundle/vundle
+set runtimepath+=~/.vim/bundle/Vundle.vim
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 call vundle#rc()
 
@@ -38,6 +38,8 @@ endfunc
 " Launching vim will show a lightgray horizontal line
 highlight CursorLine guibg=#545454 ctermbg=lightgray
 
+call vundle#begin()
+
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
@@ -67,6 +69,8 @@ Plugin 'wting/rust.vim'
 Plugin 'groenewege/vim-less'
 Plugin 'lambdatoast/elm.vim'
 Plugin 'slim-template/vim-slim'
+
+call vundle#end()
 
 filetype on
 filetype indent on

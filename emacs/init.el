@@ -17,9 +17,12 @@
                       rainbow-delimiters
 		      color-theme-sanityinc-solarized
 		      tuareg
-		      elixir-mode
 		      racket-mode
-		      haskell-mode))
+		      haskell-mode
+		      feature-mode
+		      coffee-mode
+		      elixir-mode))
+
 (dolist (p my-packages)
   (unless (package-installed-p p)
     (package-refresh-contents)

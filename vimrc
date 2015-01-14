@@ -69,6 +69,8 @@ Plugin 'wting/rust.vim'
 Plugin 'groenewege/vim-less'
 Plugin 'lambdatoast/elm.vim'
 Plugin 'slim-template/vim-slim'
+Plugin 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
+"Plugin 'xolox/vim-lua-ftplugin'
 
 call vundle#end()
 

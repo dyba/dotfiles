@@ -7,21 +7,25 @@
 (package-initialize)
 
 ;; Grab the following packages if not already installed
-(defvar my-packages '(pkg-info
-		      dash
-		      cider
-                      projectile
-                      eldoc
-                      paredit
-                      clojure-mode
-                      rainbow-delimiters
-		      color-theme-sanityinc-solarized
-		      tuareg
-		      racket-mode
-		      haskell-mode
-		      feature-mode
-		      coffee-mode
-		      elixir-mode))
+(defvar my-packages
+  '(pkg-info
+    dash
+    auto-complete
+    ac-cider
+    cider
+    projectile
+    eldoc
+    paredit
+    clojure-mode
+    rainbow-delimiters
+    color-theme-sanityinc-solarized
+    tuareg
+    dockerfile-mode
+    racket-mode
+    haskell-mode
+    feature-mode
+    coffee-mode
+    elixir-mode))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
@@ -49,12 +53,6 @@
 (require 'paren)
 (setq show-paren-style 'parenthesis)
 (show-paren-mode +1)
-
-;; Enable ElDoc in Clojure buffers
-(add-hook 'cider-mode-hook
-          'cider-turn-on-eldoc-mode)
-(add-hook 'cider-repl-mode-hook 'paredit-mode)
-(add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 
 ;; Load the path in which you store rbenv
 ;; (setenv "PATH" (concat "/usr/local/bin" ":" (getenv "PATH")))
@@ -88,7 +86,7 @@
 ;; Erlang Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-to-list 'load-path "/usr/local/opt/erlang/lib/erlang/lib/tools-2.7/emacs")
+(add-to-list 'load-path "/usr/local/opt/erlang/lib/erlang/lib/tools-2.7.1/emacs")
 
 (add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
@@ -122,7 +120,7 @@
 ;; ProofGeneral Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(load-file "~/.emacs.d/vendor/ProofGeneral/generic/proof-site.el")
+;; (load-file "~/.emacs.d/vendor/ProofGeneral/generic/proof-site.el")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Tuareg Mode Configuration (For OCaml)
@@ -187,6 +185,16 @@
 ;; Cider Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Enable ElDoc in Clojure buffers
+(add-hook 'cider-mode-hook #'eldoc-mode)
+(add-hook 'cider-repl-mode-hook #'paredit-mode)
+(add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
+
+;; log communication with the nREPL server
+(setq nrepl-log-messages)
+
+;; hide *nrepl-connection* and *nrepl-server* buffers from C-x b
+(setq nrepl-hide-special-buffers t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; SML Configuration

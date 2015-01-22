@@ -16,10 +16,19 @@
     projectile
     eldoc
     paredit
-    clojure-mode
     rainbow-delimiters
+
+    ;; JavaScript packages
+    js-comint
+    js2-mode
+    ac-js2
+
+    ;; Themes
     color-theme-sanityinc-solarized
+    zenburn-theme
+
     tuareg
+    clojure-mode
     dockerfile-mode
     racket-mode
     haskell-mode
@@ -77,6 +86,17 @@
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Window Movement Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Use Shift+arrow_keys to move cursor around split panes
+(windmove-default-keybindings)
+
+;; when cursor is on edge, move to the other side, as in toroidal
+;; space
+(setq windmove-wrap-around t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Elixir Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -106,6 +126,38 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; JavaScript Mode Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+(add-hook 'js-mode-hook 'js2-minor-mode)
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+
+(require 'js-comint)
+
+;; Make sure you have rhino installed: brew install rhino
+(setq inferior-js-program-command "rhino")
+
+(add-hook 'js2-mode-hook
+	  '(lambda ()
+	     (local-set-key "\C-x\C-e" 'js-send-last-sexp)
+	     (local-set-key "\C-\M-x" 'js-send-last-sexp-and-go)
+	     (local-set-key "\C-cb" 'js-send-buffer)
+	     (local-set-key "\C-c\C-b" 'js-send-buffer-and-go)
+	     (local-set-key "\C-cl" 'js-load-file-and-go)))
+
+(setq inferior-js-mode-hook
+      (lambda ()
+        ;; We like nice colors
+        (ansi-color-for-comint-mode-on)
+        ;; Deal with some prompt nonsense
+        (add-to-list
+         'comint-preoutput-filter-functions
+         (lambda (output)
+           (replace-regexp-in-string "\033\[[0-9]+[A-Z]" "" output)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Coq Mode Configuration

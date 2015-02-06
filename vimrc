@@ -70,6 +70,7 @@ Plugin 'groenewege/vim-less'
 Plugin 'lambdatoast/elm.vim'
 Plugin 'slim-template/vim-slim'
 Plugin 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
+Plugin 'jnurmine/Zenburn'
 "Plugin 'xolox/vim-lua-ftplugin'
 
 call vundle#end()
@@ -122,8 +123,8 @@ nnoremap <leader>hl :set hlsearch!<cr>
 let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
 
-set background=light
-colorscheme solarized
+set background=dark
+colorscheme zenburn
 
 "================= Tagbar Settings ==================="
 nnoremap <leader>tbt :TagbarToggle<cr>

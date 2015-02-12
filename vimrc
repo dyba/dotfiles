@@ -4,7 +4,6 @@ filetype plugin indent off
 
 set runtimepath+=~/.vim/bundle/Vundle.vim
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-call vundle#rc()
 
 " Change the default font type
 set guifont=Menlo\ Regular\:h16

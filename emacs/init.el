@@ -4,6 +4,8 @@
 	     '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+	     '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (package-initialize)
 
 ;; Grab the following packages if not already installed
@@ -229,6 +231,8 @@
   (it 'defun)
   (describe 'defun)
   (context 'defun))
+
+(add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Cider Configuration

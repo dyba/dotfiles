@@ -40,21 +40,27 @@ highlight CursorLine guibg=#545454 ctermbg=lightgray
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-cucumber'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'vim-scripts/VimClojure'
 Plugin 'vim-scripts/Align'
 Plugin 'twerth/ir_black'
+
 Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-cucumber'
+
+Plugin 'kien/ctrlp.vim'
+Plugin 'kien/rainbow_parentheses.vim'
+
 Plugin 'pangloss/vim-javascript'
 Plugin 'elzr/vim-json'
 Plugin 'briancollins/vim-jst'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'majutsushi/tagbar'
-Plugin 'kien/ctrlp.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mileszs/ack.vim'
@@ -70,6 +76,7 @@ Plugin 'lambdatoast/elm.vim'
 Plugin 'slim-template/vim-slim'
 Plugin 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
 Plugin 'jnurmine/Zenburn'
+Plugin 'guns/vim-sexp'
 "Plugin 'xolox/vim-lua-ftplugin'
 
 call vundle#end()

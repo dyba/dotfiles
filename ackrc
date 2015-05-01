@@ -14,6 +14,7 @@
 --type-set=liquid:ext:liquid
 --type-set=haml:match:/html\.haml/
 --type-set=markdown:ext:markdown,md,mdown
+--type-set=clojurescript:ext:cljs
 --type-set=cucumber:ext:feature
 --type-set=rdoc:ext:rdoc
 
@@ -23,6 +24,7 @@
 --haml
 --dart
 --clojure
+--clojurescript
 --coffeescript
 --css
 --erlang

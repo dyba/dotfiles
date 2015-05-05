@@ -20,6 +20,11 @@
     paredit
     rainbow-delimiters
     clj-refactor
+    helm
+    helm-git
+    helm-ack
+    helm-projectile
+    perspective
 
     ;; JavaScript packages
     js-comint
@@ -57,10 +62,6 @@
 (setq org-log-done 'time)
 
 (global-linum-mode)
-
-;; Enable projectile globally
-(require 'projectile)
-(projectile-global-mode)
 
 ;; Highlight Parentheses
 (require 'paren)
@@ -256,6 +257,29 @@
 	    (cljr-add-keybindings-with-prefix "C-c C-r")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Helm Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'helm)
+(require 'helm-config)
+
+(helm-autoresize-mode t)
+
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x b") 'helm-mini)
+
+(when (executable-find "ack")
+  (setq helm-grep-default-command "ack -Hn --no-group --no-color %e %p %f"
+	helm-grep-default-recurse-command "ack -Hn --no-group --no-color %e %p %f"))
+
+(setq helm-M-x-fuzzy-match t
+      helm-recentf-fuzzy-match t)
+
+(helm-mode 1)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Cider Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -269,6 +293,27 @@
 
 ;; hide *nrepl-connection* and *nrepl-server* buffers from C-x b
 (setq nrepl-hide-special-buffers t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Projectile Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'projectile)
+
+(projectile-global-mode)
+
+(setq projectile-completion-system 'helm)
+(setq projectile-switch-project-action 'helm-projectile)
+
+(helm-projectile-on)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Perspective Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'perspective)
+
+(persp-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; SML Configuration
@@ -332,7 +377,7 @@
   (turn-on-eldoc-mode)
   (eldoc-add-command
    'paredit-backward-delete
-   'pradedit-close-round))
+   'paredit-close-round))
 
 ;; Adding Electric Return
 (defvar electrify-return-match

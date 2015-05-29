@@ -25,6 +25,7 @@
     helm-ack
     helm-projectile
     perspective
+    web-mode
 
     ;; JavaScript packages
     js-comint
@@ -70,6 +71,7 @@
 (setq org-log-done 'time)
 
 (global-linum-mode)
+(column-number-mode)
 
 ;; Highlight Parentheses
 (require 'paren)
@@ -114,6 +116,22 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'elixir-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Web-mode Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'web-mode)
+
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+
+(defun web-mode-config ()
+  "Custom hooks for web-mode."
+  (setq web-mode-markup-indent-offset 4)
+  (setq web-mode-code-indent-offset 4))
+
+(add-hook 'web-mode-hook 'web-mode-config)
+(add-hook 'web-mode-hook (lambda () (auto-complete-mode 1)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ZenCoding Configuration

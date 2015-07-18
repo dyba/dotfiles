@@ -29,6 +29,9 @@
 	cl = clone
 	rv = remote -v
 	r = remote
+	# rm-del
+	#   Deletes all files that have been marked as deleted when running `git status`.
+	rm-del = git diff --diff-filter=D --name-only -z | xargs -0 git rm
 [core]
 	editor = vim -f
 [diff]

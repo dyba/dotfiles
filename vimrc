@@ -196,6 +196,7 @@ au BufNewFile,BufReadPost *.xml setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.xsd setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.go set noexpandtab tabstop=4 shiftwidth=4
 au BufNewFile,BufReadPost *.css setl shiftwidth=2 softtabstop=2 expandtab
-au BufRead,BufNewFile Vagrantfile set filetype=ruby
+
+au BufNewFile,BufRead [vV]agrantfile set filetype=ruby
 
 au FileType go au BufWritePre <buffer> Fmt

@@ -35,6 +35,12 @@
     tern
     tern-auto-complete
 
+    ;; Ruby packages
+    rbenv
+    
+    ;; Rust packages
+    rust-mode
+    
     ;; Themes
     color-theme-sanityinc-solarized
     zenburn-theme

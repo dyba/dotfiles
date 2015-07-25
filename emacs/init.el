@@ -26,7 +26,8 @@
     helm-projectile
     perspective
     web-mode
-
+    magit
+    
     ;; JavaScript packages
     js-comint
     js2-mode
@@ -133,7 +134,7 @@
 
 (require 'web-mode)
 
-(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
 
 (defun web-mode-config ()
   "Custom hooks for web-mode."
@@ -142,6 +143,12 @@
 
 (add-hook 'web-mode-hook 'web-mode-config)
 (add-hook 'web-mode-hook (lambda () (auto-complete-mode 1)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Magit Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ZenCoding Configuration
@@ -180,7 +187,7 @@
 ;; JavaScript Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+;; (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 (add-hook 'js2-mode-hook (lambda  () (auto-complete-mode)))
 (add-hook 'js2-mode-hook 'ac-js2-mode)
@@ -286,6 +293,7 @@
   (context 'defun))
 
 (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+(add-to-list 'auto-mode-alist '("\\.boot$" . clojure-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Clj Refactor Configuration

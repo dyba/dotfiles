@@ -24,6 +24,9 @@ set hls
 " Follow the cursor with a horizontal line across the screen
 set cursorline
 
+" Display commands as they are being typed
+set showcmd
+
 " Function to toggle between relative and absolute line numbering
 function! NumberToggle()
   if(&relativenumber == 1)

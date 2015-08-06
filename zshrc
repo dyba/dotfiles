@@ -88,3 +88,6 @@ export ISE_PLATFORM=macosx-x86-64
 
 # Enable Zsh completion for AWS
 source /usr/local/share/zsh/site-functions/_aws
+
+# Start tmux automatically
+[[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux

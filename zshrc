@@ -91,3 +91,5 @@ source /usr/local/share/zsh/site-functions/_aws
 
 # Start tmux automatically
 [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+
+export JAVA_HOME=$(/usr/libexec/java_home)

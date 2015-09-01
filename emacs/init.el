@@ -1,9 +1,7 @@
 (require 'package)
 
 (add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+	     '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives
 	     '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (package-initialize)
@@ -12,14 +10,13 @@
 (defvar my-packages
   '(pkg-info
     dash
+    
     auto-complete
-    ac-cider
-    cider
+    
     projectile
     eldoc
     paredit
     rainbow-delimiters
-    clj-refactor
     helm
     helm-git
     helm-ack
@@ -37,16 +34,27 @@
 
     ;; Ruby packages
     rbenv
+    enh-ruby-mode
+    robe
+    inf-ruby
+    ruby-tools
     
     ;; Rust packages
     rust-mode
-    
+
+    ;; Clojure packages
+    clojure-mode
+    clj-refactor
+    clojure-mode-extra-font-locking
+    ac-cider
+    cider
+    midje-mode
+
     ;; Themes
     color-theme-sanityinc-solarized
     zenburn-theme
 
     tuareg
-    clojure-mode
     zencoding-mode
     dockerfile-mode
     racket-mode
@@ -65,6 +73,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'auto-complete)
+
+(add-to-list 'ac-modes #'enh-ruby-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Global Configuration
@@ -157,6 +167,38 @@
 
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
+
+(setq magit-last-seen-setup-instructions "1.4.0")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Enhanced Ruby Mode Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'enh-ruby-mode)
+
+(add-hook 'enh-ruby-mode-hook #'robe-mode)
+(add-hook 'enh-ruby-mode-hook #'inf-ruby-minor-mode)
+(add-hook 'enh-ruby-mode-hook #'ruby-tools-mode)
+(add-hook 'enh-ruby-mode-hook (lambda () (global-rbenv-mode)))
+
+(add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile$" . enh-ruby-mode))
+
+(setq enh-ruby-hanging-brace-indent-level 2)
+(setq enh-ruby-bounce-deep-indent t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Rbenv Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'rbenv)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Ruby Tools Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'ruby-tools)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ZenCoding Configuration
@@ -285,6 +327,8 @@
 
 (require 'clojure-mode)
 
+(require 'clojure-mode-extra-font-locking)
+
 ;; For better indentation for Compojure macros
 (define-clojure-indent
   (defroutes 'defun)
@@ -298,10 +342,25 @@
   ;; For better indentation of speclj
   (it 'defun)
   (describe 'defun)
-  (context 'defun))
+  (context 'defun)
+  
+  ;; For better indentation when using midje
+  (fact 'defun)
+  (facts 'defun)
+  (fact-group 'defun))
 
+(add-hook 'clojure-mode-hook #'subword-mode)
 (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'clojure-mode-hook #'enable-paredit)
 (add-to-list 'auto-mode-alist '("\\.boot$" . clojure-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Midje Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'midje-mode)
+
+(add-hook 'clojure-mode-hook #'midje-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Clj Refactor Configuration
@@ -334,7 +393,6 @@
 
 (setq helm-M-x-fuzzy-match t
       helm-recentf-fuzzy-match t)
-
 (helm-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -415,7 +473,6 @@
 (defun enable-paredit () (paredit-mode t))
 
 ;; Paredit hooks
-(add-hook 'clojure-mode-hook 'enable-paredit)
 (add-hook 'emacs-lisp-mode-hook 'enable-paredit)
 (add-hook 'eval-expression-minibuffer-setup-hook 'enable-paredit)
 
@@ -470,13 +527,36 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector [default bold shadow italic underline bold bold-italic bold])
- '(ansi-color-names-vector (vector "#708183" "#c60007" "#728a05" "#a57705" "#2075c7" "#c61b6e" "#259185" "#042028"))
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
+ '(ansi-color-names-vector
+   (vector "#708183" "#c60007" "#728a05" "#a57705" "#2075c7" "#c61b6e" "#259185" "#042028"))
  '(custom-enabled-themes (quote (sanityinc-solarized-light)))
- '(custom-safe-themes (quote ("6a9606327ecca6e772fba6ef46137d129e6d1888dcfc65d0b9b27a7a00a4af20" "282606e51ef2811142af5068bd6694b7cf643b27d63666868bc97d04422318c1" "e80932ca56b0f109f8545576531d3fc79487ca35a9a9693b62bf30d6d08c9aaf" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
+ '(custom-safe-themes
+   (quote
+    ("a444b2e10bedc64e4c7f312a737271f9a2f2542c67caa13b04d525196562bf38" "6a9606327ecca6e772fba6ef46137d129e6d1888dcfc65d0b9b27a7a00a4af20" "282606e51ef2811142af5068bd6694b7cf643b27d63666868bc97d04422318c1" "e80932ca56b0f109f8545576531d3fc79487ca35a9a9693b62bf30d6d08c9aaf" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
  '(fci-rule-color "#0a2832")
  '(vc-annotate-background nil)
- '(vc-annotate-color-map (quote ((20 . "#c60007") (40 . "#bd3612") (60 . "#a57705") (80 . "#728a05") (100 . "#259185") (120 . "#2075c7") (140 . "#c61b6e") (160 . "#5859b7") (180 . "#c60007") (200 . "#bd3612") (220 . "#a57705") (240 . "#728a05") (260 . "#259185") (280 . "#2075c7") (300 . "#c61b6e") (320 . "#5859b7") (340 . "#c60007") (360 . "#bd3612"))))
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#c60007")
+     (40 . "#bd3612")
+     (60 . "#a57705")
+     (80 . "#728a05")
+     (100 . "#259185")
+     (120 . "#2075c7")
+     (140 . "#c61b6e")
+     (160 . "#5859b7")
+     (180 . "#c60007")
+     (200 . "#bd3612")
+     (220 . "#a57705")
+     (240 . "#728a05")
+     (260 . "#259185")
+     (280 . "#2075c7")
+     (300 . "#c61b6e")
+     (320 . "#5859b7")
+     (340 . "#c60007")
+     (360 . "#bd3612"))))
  '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

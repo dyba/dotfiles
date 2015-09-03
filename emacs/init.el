@@ -50,11 +50,17 @@
     cider
     midje-mode
 
+    ;; Erlang packages
+    edts
+
     ;; Themes
     color-theme-sanityinc-solarized
     zenburn-theme
 
-    tuareg
+    ;; Clojure packages
+    clojure-mode
+
+    tuareg    
     zencoding-mode
     dockerfile-mode
     racket-mode
@@ -209,21 +215,6 @@
 (add-hook 'sgml-mode-hook 'zencoding-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Erlang Configuration
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(add-to-list 'load-path "/usr/local/opt/erlang/lib/erlang/lib/tools-2.7.2/emacs")
-
-(add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
-(add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
-
-(setq erlang-root-dir "/usr/local/opt/erlang/lib/erlang")
-(add-to-list 'exec-path "/usr/local/opt/erlang/lib/erlang/bin")
-(setq erlang-man-root-dir "/usr/local/opt/erlang/lib/erlang/man")
-
-(require 'erlang-start)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Haskell Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -349,6 +340,7 @@
   (facts 'defun)
   (fact-group 'defun))
 
+
 (add-hook 'clojure-mode-hook #'subword-mode)
 (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'clojure-mode-hook #'enable-paredit)
@@ -377,8 +369,8 @@
 ;; Helm Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'helm)
 (require 'helm-config)
+(require 'helm)
 
 (helm-autoresize-mode t)
 

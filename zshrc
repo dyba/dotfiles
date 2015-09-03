@@ -86,6 +86,9 @@ alias prettify_json="json_reformat" # Run 'brew install yajl' to get the `json_r
 export ISE_EIFFEL=/Users/ddyba/Downloads/Eiffel_14.05
 export ISE_PLATFORM=macosx-x86-64
 
+# Installed Haskell scripts get dumped here by cabal
+export PATH=$HOME/.cabal/bin:$PATH
+
 # Enable Zsh completion for AWS
 source /usr/local/share/zsh/site-functions/_aws
 

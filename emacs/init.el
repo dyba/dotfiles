@@ -42,6 +42,9 @@
     ;; Rust packages
     rust-mode
 
+    ;; Common Lisp packages
+    slime
+    
     ;; Clojure packages
     clojure-mode
     clj-refactor
@@ -160,15 +163,18 @@
 
 (require 'web-mode)
 
-(add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
 
 (defun web-mode-config ()
   "Custom hooks for web-mode."
   (setq web-mode-markup-indent-offset 4)
-  (setq web-mode-code-indent-offset 4))
+  (setq web-mode-code-indent-offset 4)
+  (setq web-mode-enable-current-element-highlight t)
+  (setq web-mode-enable-current-column-highlight t))
 
 (add-hook 'web-mode-hook 'web-mode-config)
 (add-hook 'web-mode-hook (lambda () (auto-complete-mode 1)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Magit Configuration
@@ -406,7 +412,7 @@
 
 ;; Enable ElDoc in Clojure buffers
 (add-hook 'cider-mode-hook #'eldoc-mode)
-(add-hook 'cider-repl-mode-hook #'paredit-mode)
+(add-hook 'cider-repl-mode-hook #'enable-paredit)
 (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
 
 ;; log communication with the nREPL server
@@ -480,6 +486,22 @@
 ;; Paredit hooks
 (add-hook 'emacs-lisp-mode-hook 'enable-paredit)
 (add-hook 'eval-expression-minibuffer-setup-hook 'enable-paredit)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Common Lisp Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'cl-lib)
+
+(add-hook 'lisp-mode-hook #'enable-paredit)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Slime Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq inferior-lisp-program "/usr/local/bin/clisp") ;; find a way to automatically get the path
+(setq slime-contribs '(slime-fancy))
+(add-hook 'inferior-lisp-mode-hook #'enable-paredit)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ElDoc Configuration

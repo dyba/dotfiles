@@ -493,7 +493,12 @@
 
 (require 'cl-lib)
 
+(defun enable-electric-return ()
+  (local-set-key (kbd "RET") 'electrify-return-if-match))
+
 (add-hook 'lisp-mode-hook #'enable-paredit)
+(add-hook 'lisp-mode-hook #'enable-electric-return)
+(add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Slime Configuration
@@ -501,7 +506,12 @@
 
 (setq inferior-lisp-program "/usr/local/bin/clisp") ;; find a way to automatically get the path
 (setq slime-contribs '(slime-fancy))
+
 (add-hook 'inferior-lisp-mode-hook #'enable-paredit)
+(add-hook 'slime-repl-mode-hook #'enable-paredit)
+(add-hook 'slime-repl-mode-hook #'enable-electric-return)
+(add-hook 'slime-repl-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'inferior-lisp-mode-hook #'enable-electric-return)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ElDoc Configuration

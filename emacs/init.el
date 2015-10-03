@@ -12,6 +12,14 @@
     dash
     
     auto-complete
+
+    company
+    company-inf-ruby
+    slime-company
+    company-ghci
+    
+    ;; Helm extensions
+    helm-flyspell
     
     projectile
     eldoc
@@ -82,6 +90,21 @@
     (package-install p)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Helper functions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun shell-command-to-string-no-newline (command)
+  "Returns the output of COMMAND as a string, stripping the newline character"
+  (replace-regexp-in-string "\n$" "" (shell-command-to-string command)))
+
+(defun program-exists-p (program)
+  "Checks if PROGRAM is installed.
+  A PROGRAM is considered `installed` if there is a path to it. Otherwise, it's not
+  installed."
+  (let ((str (shell-command-to-string-no-newline (concat "type" " " program))))
+    (and (string-match (concat program " is ") str) t)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Auto Completion Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -108,6 +131,13 @@
 
 (global-linum-mode)
 (column-number-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; FlySpell Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(dolist (hook '(text-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Highlight Parentheses Configuration
@@ -196,12 +226,18 @@
 (add-hook 'enh-ruby-mode-hook #'ruby-tools-mode)
 (add-hook 'enh-ruby-mode-hook (lambda () (global-rbenv-mode)))
 
-(add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile$" . enh-ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec$" . enh-ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.ru$" . enh-ruby-mode))
-(add-to-list 'auto-mode-alist '("Gemfile$" . enh-ruby-mode))
+(defvar ruby-extns
+  '("\\.rb$"
+    "\\.rake$"
+    "Rakefile$"
+    "\\.gemspec$"
+    "Vagrantfile"
+    "\\.ru$"
+    "Gemfile$")
+  "A collection of regular expressions to match extensions for Ruby files")
+
+(dolist ((extn ruby-extns))
+  (add-to-list 'auto-mode-alist '(extn . enh-ruby-mode)))
 
 (setq enh-ruby-hanging-brace-indent-level 2)
 (setq enh-ruby-bounce-deep-indent t)
@@ -249,7 +285,7 @@
 
 ;; (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
-(add-hook 'js2-mode-hook (lambda  () (auto-complete-mode)))
+(add-hook 'js2-mode-hook (lambda () (auto-complete-mode)))
 (add-hook 'js2-mode-hook 'ac-js2-mode)
 
 (require 'js-comint)
@@ -511,7 +547,7 @@
 ;; Slime Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq inferior-lisp-program "/usr/local/bin/clisp") ;; find a way to automatically get the path
+(setq inferior-lisp-program (shell-command-to-string-no-newline "which clisp"))
 (setq slime-contribs '(slime-fancy))
 
 (add-hook 'inferior-lisp-mode-hook #'enable-paredit)

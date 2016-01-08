@@ -182,6 +182,7 @@ au BufNewFile,BufReadPost *.rb setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.liquid setl shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufReadPost *.rake setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Rakefile setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.thor setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost [vV]agrantfile setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Makefile setl shiftwidth=8 softtabstop=8 tabstop=8 noexpandtab
 au BufNewFile,BufReadPost *.js setl shiftwidth=4 softtabstop=4 expandtab
@@ -201,5 +202,6 @@ au BufNewFile,BufReadPost *.go set noexpandtab tabstop=4 shiftwidth=4
 au BufNewFile,BufReadPost *.css setl shiftwidth=2 softtabstop=2 expandtab
 
 au BufNewFile,BufRead [vV]agrantfile set filetype=ruby
+au BufNewFile,BufRead *.thor set filetype=ruby
 
 au FileType go au BufWritePre <buffer> Fmt

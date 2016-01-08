@@ -90,9 +90,12 @@ export ISE_PLATFORM=macosx-x86-64
 export PATH=$HOME/.cabal/bin:$PATH
 
 # Enable Zsh completion for AWS
-source /usr/local/share/zsh/site-functions/_aws
+# source /usr/local/share/zsh/site-functions/_aws
 
 # Start tmux automatically
 [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 
 export JAVA_HOME=$(/usr/libexec/java_home)
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh

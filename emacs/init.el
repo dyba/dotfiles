@@ -21,6 +21,8 @@
     ;; Helm extensions
     helm-flyspell
     
+    neotree
+    
     projectile
     eldoc
     paredit
@@ -46,6 +48,7 @@
     robe
     inf-ruby
     ruby-tools
+    yard-mode
     
     ;; Rust packages
     rust-mode
@@ -139,6 +142,12 @@
 (dolist (hook '(text-mode-hook))
   (add-hook hook (lambda () (flyspell-mode 1))))
 
+;; Neotree Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'neotree)
+
+(global-set-key "\C-xn" 'neotree-toggle)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Highlight Parentheses Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -204,6 +213,7 @@
 
 (add-hook 'web-mode-hook 'web-mode-config)
 (add-hook 'web-mode-hook (lambda () (auto-complete-mode 1)))
+(add-to-list 'auto-mode-alist '("\\.xml.erb" . web-mode))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -224,6 +234,7 @@
 (add-hook 'enh-ruby-mode-hook #'robe-mode)
 (add-hook 'enh-ruby-mode-hook #'inf-ruby-minor-mode)
 (add-hook 'enh-ruby-mode-hook #'ruby-tools-mode)
+(add-hook 'enh-ruby-mode-hook #'yard-mode)
 (add-hook 'enh-ruby-mode-hook (lambda () (global-rbenv-mode)))
 
 (defvar ruby-extns

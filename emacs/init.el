@@ -1,9 +1,9 @@
 (require 'package)
 
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives
-	     '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(setq package-archives
+      '(("melpa" . "http://melpa.org/packages/")
+	("melpa-stable" . "http://stable.melpa.org/packages/")))
+
 (package-initialize)
 
 ;; Grab the following packages if not already installed

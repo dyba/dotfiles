@@ -44,7 +44,10 @@
     ac-js2
     tern
     tern-auto-complete
-
+    
+    ;; CSS packages
+    sass-mode
+    
     ;; Ruby packages
     rbenv
     enh-ruby-mode
@@ -201,6 +204,11 @@
 ;; when cursor is on edge, move to the other side, as in toroidal
 ;; space
 (setq windmove-wrap-around t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Sass Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'sass-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Elixir Configuration

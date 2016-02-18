@@ -6,6 +6,9 @@
 
 (package-initialize)
 
+(defalias 'pi 'package-install)
+(defalias 'pl 'package-list-packages)
+
 ;; Grab the following packages if not already installed
 (defvar my-packages
   '(pkg-info

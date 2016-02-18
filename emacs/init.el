@@ -90,7 +90,16 @@
     coffee-mode
     elixir-mode))
 
-(dolist (p my-packages)
+(defvar pinned-packages
+  '(
+    ;; Elixir
+    alchemist
+    ))
+
+(dolist (pkg pinned-packages)
+  (add-to-list 'package-pinned-packages `(',pkg "melpa-stable") t))
+
+(dolist (p (append my-packages pinned-packages))
   (unless (package-installed-p p)
     (package-refresh-contents)
     (package-install p)))
@@ -198,6 +207,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'elixir-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Alchemist Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'alchemist)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Web-mode Configuration

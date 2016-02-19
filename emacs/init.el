@@ -149,6 +149,7 @@
 
 (setq org-log-done 'time)
 
+(setq linum-format "%4d")
 (global-linum-mode)
 (column-number-mode)
 

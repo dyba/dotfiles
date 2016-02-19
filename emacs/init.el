@@ -557,6 +557,11 @@
 ;; hide *nrepl-connection* and *nrepl-server* buffers from C-x b
 (setq nrepl-hide-special-buffers t)
 
+;; Make C-c C-z switch to the CIDER REPL buffer in the current window
+(setq cider-repl-display-in-current-window t)
+
+(setq cider-repl-result-prefix ";; => ")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Projectile Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

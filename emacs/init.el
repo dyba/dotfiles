@@ -97,6 +97,8 @@
   '(
     ;; Elixir
     alchemist
+
+    smartparens
     ))
 
 (dolist (pkg pinned-packages)
@@ -404,6 +406,69 @@
 (add-hook 'tuareg-mode-hook 'utop-setup-ocaml-buffer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; SmartParens Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'smartparens-config)
+
+(smartparens-global-mode)
+(smartparens-strict-mode)
+
+(defvar custom-smartparens-mapping
+  '(("C-M-f" . sp-forward-sexp)
+    ("C-M-b" . sp-backward-sexp)
+    
+    ("C-M-d" . sp-down-sexp)
+    ("C-M-a" . sp-backward-down-sexp)
+    
+    ("C-S-d" . sp-beginning-of-sexp)
+    ("C-S-a" . sp-end-of-sexp)
+    
+    ("C-M-e" . sp-up-sexp)
+    ("C-M-u" . sp-backward-up-sexp)
+    ("C-M-t" . sp-transpose-sexp)
+    
+    ("C-M-n" . sp-next-sexp)
+    ("C-M-p" . sp-previous-sexp)
+    
+    ("C-M-k" . sp-kill-sexp)
+    ("C-M-w" . sp-copy-sexp)
+    
+    ("M-<delete>" . sp-unwrap-sexp)
+    ("M-<backspace>" . sp-backward-unwrap-sexp)
+    
+    ("C-<right>" . sp-forward-slurp-sexp)
+    ("C-<left>" . sp-forward-barf-sexp)
+    ("C-M-<left>" . sp-backward-slurp-sexp)
+    ("C-M-<right>" . sp-backward-barf-sexp)
+    
+    ("M-D" . sp-splice-sexp)
+    ("C-M-<delete>" . sp-splice-sexp-killing-forward)
+    ("C-M-<backspace>" . sp-splice-sexp-killing-backward)
+    ("C-S-<backspace>" . sp-splice-sexp-killing-around)
+    
+    ("C-]" . sp-select-next-thing-exchange)
+    ("C-<left_bracket>" . sp-select-previous-thing)
+    ("C-M-]" . sp-select-next-thing)
+    
+    ("M-F" . sp-forward-symbol)
+    ("M-B" . sp-backward-symbol)))
+
+(dolist (item custom-smartparens-mapping)
+  (define-key smartparens-mode-map (kbd (car item)) (cdr item)))
+
+(dolist ((hook '(emacs-lisp-mode-hook
+		 clojure-mode-hook
+		 scheme-mode-hook
+		 inferior-lisp-mode-hook
+		 slime-repl-mode-hook
+		 cider-repl-mode-hook
+		 cider-mode-hook
+		 eval-expression-minibuffer-setup-hook
+		 lisp-mode-hook)))
+  (add-hook hook 'turn-on-smartparens-strict-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Clojure Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -434,7 +499,6 @@
 
 (add-hook 'clojure-mode-hook #'subword-mode)
 (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'clojure-mode-hook #'enable-paredit)
 (add-to-list 'auto-mode-alist '("\\.boot$" . clojure-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -484,7 +548,6 @@
 
 ;; Enable ElDoc in Clojure buffers
 (add-hook 'cider-mode-hook #'eldoc-mode)
-(add-hook 'cider-repl-mode-hook #'enable-paredit)
 (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
 
 ;; log communication with the nREPL server
@@ -555,10 +618,6 @@
 ;; Turning on Paredit mode
 (defun enable-paredit () (paredit-mode t))
 
-;; Paredit hooks
-(add-hook 'emacs-lisp-mode-hook 'enable-paredit)
-(add-hook 'eval-expression-minibuffer-setup-hook 'enable-paredit)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Common Lisp Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -568,7 +627,6 @@
 (defun enable-electric-return ()
   (local-set-key (kbd "RET") 'electrify-return-if-match))
 
-(add-hook 'lisp-mode-hook #'enable-paredit)
 (add-hook 'lisp-mode-hook #'enable-electric-return)
 (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
 
@@ -576,7 +634,6 @@
 ;; Scheme Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-hook 'scheme-mode-hook #'enable-paredit)
 (add-hook 'scheme-mode-hook #'rainbow-delimiters-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -586,8 +643,6 @@
 (setq inferior-lisp-program (shell-command-to-string-no-newline "which clisp"))
 (setq slime-contribs '(slime-fancy))
 
-(add-hook 'inferior-lisp-mode-hook #'enable-paredit)
-(add-hook 'slime-repl-mode-hook #'enable-paredit)
 (add-hook 'slime-repl-mode-hook #'enable-electric-return)
 (add-hook 'slime-repl-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'inferior-lisp-mode-hook #'enable-electric-return)
@@ -625,17 +680,18 @@
     (indent-according-to-mode)))
 
 (defun enable-lisp-defaults ()
-  (paredit-mode t)
+  ;;(paredit-mode t)
   (turn-on-eldoc-mode)
   (eldoc-add-command
    'paredit-backward-delete
    'paredit-close-round)
   (local-set-key (kbd "RET") 'electrify-return-if-match)
   (eldoc-add-command 'electrify-return-if-match)
-  (show-paren-mode t))
+  ;;(show-paren-mode t)
+  )
 
-(add-hook 'emacs-lisp-mode-hook 'enable-lisp-defaults)
-(add-hook 'clojure-mode-hook 'enable-lisp-defaults)
+(add-hook 'emacs-lisp-mode-hook #'enable-lisp-defaults)
+(add-hook 'clojure-mode-hook #'enable-lisp-defaults)
 
 (set-frame-font "Menlo-16")
 (custom-set-variables

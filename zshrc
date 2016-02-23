@@ -53,6 +53,14 @@ export BUNDLER_EDITOR='mvim'
 export PATH=$HOME/.rbenv/bin:$PATH
 export PATH=$HOME/bin:$PATH
 
+# Set up pyenv
+export PYENV_ROOT=/usr/local/var/pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+# Set up exenv
+export EXENV_ROOT=/usr/local/var/exenv
+if which exenv > /dev/null; then eval "$(exenv init -)"; fi
+
 # Add Postgres app
 export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
 

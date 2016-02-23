@@ -105,6 +105,8 @@ export PATH=$HOME/.cabal/bin:$PATH
 # Start tmux automatically
 [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 
+export EDITOR="vim"
+
 export JAVA_HOME=$(/usr/libexec/java_home)
 
 export NVM_DIR=~/.nvm

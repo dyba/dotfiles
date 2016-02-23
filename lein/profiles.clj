@@ -7,6 +7,5 @@
             [codox "0.8.10"]
             [lein-set-version "0.4.1"]
             [lein-environ "1.0.0"]
-            [lein-midje "3.1.3"]
-            [refactor-nrepl "1.2.0-SNAPSHOT"]
-            [cider/cider-nrepl "0.10.0-SNAPSHOT"]]}}
+            [refactor-nrepl "1.1.0"]
+            [cider/cider-nrepl "0.9.1"]]}}

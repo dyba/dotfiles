@@ -83,6 +83,8 @@ alias mou="open /Applications/Mou.app"
 export GOPATH=$HOME/Code/go
 export PATH=$PATH:$GOPATH/bin
 
+export TERM='xterm-256color'
+
 # Aliases
 alias rake="noglob bundled_rake" # This is a workaround with rake when using Zsh: https://github.com/robbyrussell/oh-my-zsh/issues/433
 alias prettify_json="json_reformat" # Run 'brew install yajl' to get the `json_reformat` command

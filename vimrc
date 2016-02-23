@@ -80,6 +80,10 @@ Plugin 'slim-template/vim-slim'
 Plugin 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
 Plugin 'jnurmine/Zenburn'
 Plugin 'guns/vim-sexp'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'JulesWang/css.vim'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'xolox/vim-lua-ftplugin'
 
 call vundle#end()

@@ -94,13 +94,13 @@
     dockerfile-mode
     racket-mode
     feature-mode
-    coffee-mode
-    elixir-mode))
+    coffee-mode))
 
 (defvar pinned-packages
   '(
     ;; Elixir
     alchemist
+    elixir-mode
 
     smartparens
     ))

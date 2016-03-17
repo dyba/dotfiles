@@ -1,0 +1,2 @@
+setenv('GNUTERM','x11') # Install gnuplot --with-x11 via homebrew
+PS1('>> ')

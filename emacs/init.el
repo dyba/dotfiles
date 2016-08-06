@@ -2,6 +2,7 @@
 
 (setq package-archives
       '(("melpa" . "http://melpa.org/packages/")
+	("gnu" . "https://elpa.gnu.org/packages/")
 	("melpa-stable" . "http://stable.melpa.org/packages/")))
 
 (package-initialize)

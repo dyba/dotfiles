@@ -1,2 +1,6 @@
 setenv('GNUTERM','x11') # Install gnuplot --with-x11 via homebrew
 PS1('>> ')
+
+edit mode sync
+edit home .
+EDITOR('vim > /dev/tty 2>&1 < /det/tty %s')

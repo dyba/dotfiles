@@ -106,6 +106,9 @@
     company
 
     smartparens
+    
+    ;; Elm
+    elm-mode
     ))
 
 (dolist (pkg pinned-packages)
@@ -221,6 +224,11 @@
 ;; Sass Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'sass-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Elm Configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'elm-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Elixir Configuration
@@ -477,6 +485,24 @@
 		 eval-expression-minibuffer-setup-hook
 		 lisp-mode-hook)))
   (add-hook hook 'turn-on-smartparens-strict-mode))
+
+(defun custom-elixir-do-end-close-action (id action context)
+  (when (eq action 'insert)
+    (newline-and-indent)
+    (forward-line -1)
+    (indent-according-to-mode)))
+
+(sp-with-modes '(elixir-mode)
+  (sp-local-pair "->" "end"
+		 :when '(("RET"))
+		 :post-handlers '(:add custom-elixir-do-end-close-action)
+		 :actions '(insert)))
+
+(sp-with-modes '(elixir-mode)
+  (sp-local-pair "do" "end"
+		 :when '(("SPC" "RET"))
+		 :post-handlers '(:add custom-elixir-do-end-close-action)
+		 :actions '(insert)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Clojure Mode Configuration

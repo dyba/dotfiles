@@ -209,6 +209,7 @@ au BufNewFile,BufReadPost *.css setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.py setl tabstop=8 expandtab shiftwidth=4 softtabstop=4
 
 au BufNewFile,BufRead [vV]agrantfile set filetype=ruby
+au BufNewFile,BufRead Gemfile set filetype=ruby
 au BufNewFile,BufRead *.thor set filetype=ruby
 
 au FileType go au BufWritePre <buffer> Fmt

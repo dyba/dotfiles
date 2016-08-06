@@ -190,7 +190,7 @@ au BufNewFile,BufReadPost Rakefile setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.thor setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost [vV]agrantfile setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Makefile setl shiftwidth=8 softtabstop=8 tabstop=8 noexpandtab
-au BufNewFile,BufReadPost *.js setl shiftwidth=4 softtabstop=4 expandtab
+au BufNewFile,BufReadPost *.js setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.html setl shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufReadPost *.php setl shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufReadPost *.hbs setl shiftwidth=4 softtabstop=4 expandtab

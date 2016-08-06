@@ -111,3 +111,6 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
+
+# Enable command completion for awscli
+source /usr/local/share/zsh/site-functions/_aws

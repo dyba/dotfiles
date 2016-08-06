@@ -17,7 +17,6 @@
     
     auto-complete
 
-    company
     company-inf-ruby
     slime-company
     company-ghci
@@ -102,6 +101,9 @@
     ;; Elixir
     alchemist
     elixir-mode
+    
+    ;; Global
+    company
 
     smartparens
     ))
@@ -130,12 +132,9 @@
     (and (string-match (concat program " is ") str) t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Auto Completion Mode Configuration
+;; Company Mode Configuration
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(require 'auto-complete)
-
-(add-to-list 'ac-modes #'enh-ruby-mode)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Global Configuration

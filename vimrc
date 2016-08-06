@@ -82,6 +82,7 @@ Plugin 'jnurmine/Zenburn'
 Plugin 'guns/vim-sexp'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'JulesWang/css.vim'
+Plugin 'jvirtanen/vim-octave'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'xolox/vim-lua-ftplugin'
@@ -211,3 +212,9 @@ au BufNewFile,BufRead [vV]agrantfile set filetype=ruby
 au BufNewFile,BufRead *.thor set filetype=ruby
 
 au FileType go au BufWritePre <buffer> Fmt
+
+augroup filetypedetect
+  au! BufRead,BufNewFile *.m,*.oct set filetype=octave
+augroup END
+
+au BufNewFile,BufReadPost *.m,*.oct setl shiftwidth=2 softtabstop=2 expandtab

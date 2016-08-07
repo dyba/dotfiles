@@ -114,3 +114,5 @@ source $(brew --prefix nvm)/nvm.sh
 
 # Enable command completion for awscli
 source /usr/local/share/zsh/site-functions/_aws
+
+alias emacs="/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs -nw"

@@ -32,6 +32,7 @@
 	# rm-del
 	#   Deletes all files that have been marked as deleted when running `git status`.
 	xargs-del = diff --diff-filter=D --name-only -z
+	lg = log --graph --all --pretty=format:'%C(yellow)%h%C(reset) - %C(normal)%ar%C(reset) %C(blue)%an%C(reset) %C(yellow)%s%C(reset) %C(normal)%D%C(reset)'
 [core]
 	editor = vim -f
 [diff]

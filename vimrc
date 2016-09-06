@@ -53,10 +53,12 @@ Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
+
+" Comment out lines
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-cucumber'
 
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 
 Plugin 'pangloss/vim-javascript'
@@ -68,7 +70,6 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mileszs/ack.vim'
 Plugin 'ervandew/supertab'
-Plugin 'jnwhiteh/vim-golang'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'mattn/emmet-vim'
 Plugin 'mustache/vim-mustache-handlebars'
@@ -83,6 +84,7 @@ Plugin 'guns/vim-sexp'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'JulesWang/css.vim'
 Plugin 'jvirtanen/vim-octave'
+Plugin 'fatih/vim-go'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'xolox/vim-lua-ftplugin'
@@ -181,24 +183,31 @@ nnoremap <C-n> :NERDTreeToggle<cr>
 " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set noshowmode
 
-au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.c setl shiftwidth=4 softtabstop=4 expandtab
+au BufNewFile,BufReadPost *.py setl shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufReadPost *.rb setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.liquid setl shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufReadPost *.rake setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.feature setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Rakefile setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost Gemfile  setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost Guardfile  setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.thor setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost [vV]agrantfile setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Makefile setl shiftwidth=8 softtabstop=8 tabstop=8 noexpandtab
 au BufNewFile,BufReadPost *.js setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost .babelrc setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.json setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 softtabstop=2 expandtab
+
 au BufNewFile,BufReadPost *.html setl shiftwidth=4 softtabstop=4 expandtab
+au BufNewFile,BufReadPost *.sql setl shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufReadPost *.php setl shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufReadPost *.hbs setl shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufReadPost *.erb setl shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufReadPost *.md setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Podfile setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.yml setl shiftwidth=2 softtabstop=2 expandtab
-au BufNewFile,BufReadPost *.json setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.jade setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.scss setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.sass setl shiftwidth=2 softtabstop=2 expandtab
@@ -209,6 +218,7 @@ au BufNewFile,BufReadPost *.css setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.py setl tabstop=8 expandtab shiftwidth=4 softtabstop=4
 
 au BufNewFile,BufRead [vV]agrantfile set filetype=ruby
+au BufNewFile,BufRead Guardfile set filetype=ruby
 au BufNewFile,BufRead Gemfile set filetype=ruby
 au BufNewFile,BufRead *.thor set filetype=ruby
 

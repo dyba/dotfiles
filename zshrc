@@ -1,3 +1,5 @@
+# TODO: Can we move some of these variables to .zshenv?
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -90,7 +92,11 @@ alias mou="open /Applications/Mou.app"
 export GOPATH=$HOME/Code/go
 export PATH=$PATH:$GOPATH/bin
 
-export TERM='xterm-256color'
+# Set Ansi Colors in iTerm2
+export CLICOLOR=1
+
+# Set colors to match iTerm2 Terminal Colors
+export TERM=xterm-256color
 
 # Aliases
 alias rake="noglob bundled_rake" # This is a workaround with rake when using Zsh: https://github.com/robbyrussell/oh-my-zsh/issues/433

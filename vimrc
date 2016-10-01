@@ -191,6 +191,7 @@ au BufNewFile,BufReadPost *.rake setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.feature setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Rakefile setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Gemfile  setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.gemspec setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Guardfile  setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.thor setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost [vV]agrantfile setl shiftwidth=2 softtabstop=2 expandtab
@@ -221,6 +222,7 @@ au BufNewFile,BufRead [vV]agrantfile set filetype=ruby
 au BufNewFile,BufRead Guardfile set filetype=ruby
 au BufNewFile,BufRead Gemfile set filetype=ruby
 au BufNewFile,BufRead *.thor set filetype=ruby
+au BufNewFile,BufRead *.gemspec set filetype=ruby
 
 au FileType go au BufWritePre <buffer> Fmt
 

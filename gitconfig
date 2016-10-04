@@ -33,6 +33,7 @@
 	#   Deletes all files that have been marked as deleted when running `git status`.
 	xargs-del = diff --diff-filter=D --name-only -z
 	lg = log --graph --all --pretty=format:'%C(yellow)%h%C(reset) - %C(normal)%ar%C(reset) %C(blue)%an%C(reset) %C(yellow)%s%C(reset) %C(normal)%D%C(reset)'
+	ctags = !.git/hooks/ctags
 [core]
 	editor = vim -f
 [diff]
@@ -54,3 +55,5 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[init]
+	templatedir = ~/.git_template

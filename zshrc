@@ -53,7 +53,6 @@ export BUNDLER_EDITOR='mvim'
 
 # Add .rbenv to your PATH
 export PATH=$HOME/.rbenv/bin:$PATH
-export PATH=$HOME/bin:$PATH
 # Enable shims and autocompletion
 eval "$(rbenv init -)"
 
@@ -64,21 +63,12 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi # Enables shims and 
 export JENV_ROOT=/usr/local/var/jenv
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
-# Set up pyenv
-export PYENV_ROOT=/usr/local/var/pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
 # Set up exenv
 export EXENV_ROOT=/usr/local/var/exenv
 if which exenv > /dev/null; then eval "$(exenv init -)"; fi
 
 # Add Postgres app
 export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
-
-export PATH=/usr/local/bin:$PATH
-export PATH=/usr/local/sbin:$PATH
-# export PATH=$HOME/bin/AWS-ElasticBeanstalk-CLI-2.6.0/eb/macosx/python2.7:$PATH # Fix to check for python3
-
 
 # Aliases
 alias prettify_json="json_reformat" # Run 'brew install yajl' to get the `json_reformat` command

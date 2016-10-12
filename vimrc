@@ -143,7 +143,7 @@ set background=dark
 colorscheme zenburn
 
 "================= Tagbar Settings ==================="
-nnoremap <leader>tbt :TagbarToggle<cr>
+nnoremap <leader>tb :TagbarToggle<cr>
 
 "================= Mustache Settings ==================="
 let g:mustache_abbreviations = 1

@@ -72,7 +72,7 @@ export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
 
 # Aliases
 alias prettify_json="json_reformat" # Run 'brew install yajl' to get the `json_reformat` command
-alias mou="open /Applications/Mou.app"
+alias mdown="open -a /Applications/MacDown.app"
 
 # OPAM configuration
 . /Users/ddyba/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

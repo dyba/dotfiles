@@ -580,11 +580,11 @@
 (global-set-key (kbd "C-x b") 'helm-mini)
 
 (when (executable-find "ack")
-  (setq helm-grep-default-command "ack -Hn --no-group --no-color %e %p %f"
-	helm-grep-default-recurse-command "ack -Hn --no-group --no-color %e %p %f"))
+  (setq helm-grep-default-command "ack -Hn --no-group --no-color %e %p %f")
+  (setq helm-grep-default-recurse-command "ack -Hn --no-group --no-color %e %p %f"))
 
-(setq helm-M-x-fuzzy-match t
-      helm-recentf-fuzzy-match t)
+(setq helm-M-x-fuzzy-match t)
+(setq helm-recentf-fuzzy-match t)
 (helm-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -596,7 +596,7 @@
 (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
 
 ;; log communication with the nREPL server
-(setq nrepl-log-messages)
+(setq nrepl-log-messages nil)
 
 ;; hide *nrepl-connection* and *nrepl-server* buffers from C-x b
 (setq nrepl-hide-special-buffers t)

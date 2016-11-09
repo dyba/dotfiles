@@ -1,9 +1,11 @@
 (require 'package)
 
-(setq package-archives
-      '(("melpa" . "http://melpa.org/packages/")
-	("gnu" . "https://elpa.gnu.org/packages/")
-	("melpa-stable" . "http://stable.melpa.org/packages/")))
+(add-to-list 'package-archives
+	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives
+	     '("gnu" . "https://elpa.gnu.org/packages/"))
 
 (package-initialize)
 
@@ -68,12 +70,8 @@
     
     ;; Clojure packages
     clojure-mode
-    clj-refactor
     clojure-mode-extra-font-locking
-    ac-cider
-    cider
-    midje-mode
-
+    
     ;; Erlang packages
     edts
     
@@ -110,10 +108,18 @@
     
     ;; Elm
     elm-mode
+    
+    cider
+    
+    ;; Clojure
+    midje-mode
+    clj-refactor
+    ac-cider
+    cider
     ))
 
 (dolist (pkg pinned-packages)
-  (add-to-list 'package-pinned-packages `(',pkg "melpa-stable") t))
+  (add-to-list 'package-pinned-packages `(',pkg . "melpa-stable") t))
 
 (dolist (p (append my-packages pinned-packages))
   (unless (package-installed-p p)
@@ -752,33 +758,36 @@
  '(ansi-color-faces-vector
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
-   (vector "#708183" "#c60007" "#728a05" "#a57705" "#2075c7" "#c61b6e" "#259185" "#042028"))
+   (vector "#657b83" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#073642"))
  '(custom-enabled-themes (quote (sanityinc-solarized-light)))
  '(custom-safe-themes
    (quote
-    ("a444b2e10bedc64e4c7f312a737271f9a2f2542c67caa13b04d525196562bf38" "6a9606327ecca6e772fba6ef46137d129e6d1888dcfc65d0b9b27a7a00a4af20" "282606e51ef2811142af5068bd6694b7cf643b27d63666868bc97d04422318c1" "e80932ca56b0f109f8545576531d3fc79487ca35a9a9693b62bf30d6d08c9aaf" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
- '(fci-rule-color "#0a2832")
+    ("4e753673a37c71b07e3026be75dc6af3efbac5ce335f3707b7d6a110ecb636a3" "a444b2e10bedc64e4c7f312a737271f9a2f2542c67caa13b04d525196562bf38" "6a9606327ecca6e772fba6ef46137d129e6d1888dcfc65d0b9b27a7a00a4af20" "282606e51ef2811142af5068bd6694b7cf643b27d63666868bc97d04422318c1" "e80932ca56b0f109f8545576531d3fc79487ca35a9a9693b62bf30d6d08c9aaf" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
+ '(fci-rule-color "#eee8d5")
+ '(package-selected-packages
+   (quote
+    (cider clj-refactor midje-mode zencoding-mode zenburn-theme yard-mode yaml-mode web-mode wc-mode tuareg tern-auto-complete solidity-mode smartparens slime-company sass-mode rust-mode ruby-tools rspec-mode robe rbenv rainbow-delimiters racket-mode perspective neotree magit js-comint inf-clojure helm-robe helm-projectile helm-git helm-flyspell helm-ack feature-mode enh-ruby-mode elm-mode edts dockerfile-mode company-inf-ruby company-ghci company-ghc color-theme-sanityinc-solarized coffee-mode clojure-mode-extra-font-locking chess auto-complete-auctex alchemist ac-js2)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
-    ((20 . "#c60007")
-     (40 . "#bd3612")
-     (60 . "#a57705")
-     (80 . "#728a05")
-     (100 . "#259185")
-     (120 . "#2075c7")
-     (140 . "#c61b6e")
-     (160 . "#5859b7")
-     (180 . "#c60007")
-     (200 . "#bd3612")
-     (220 . "#a57705")
-     (240 . "#728a05")
-     (260 . "#259185")
-     (280 . "#2075c7")
-     (300 . "#c61b6e")
-     (320 . "#5859b7")
-     (340 . "#c60007")
-     (360 . "#bd3612"))))
+    ((20 . "#dc322f")
+     (40 . "#cb4b16")
+     (60 . "#b58900")
+     (80 . "#859900")
+     (100 . "#2aa198")
+     (120 . "#268bd2")
+     (140 . "#d33682")
+     (160 . "#6c71c4")
+     (180 . "#dc322f")
+     (200 . "#cb4b16")
+     (220 . "#b58900")
+     (240 . "#859900")
+     (260 . "#2aa198")
+     (280 . "#268bd2")
+     (300 . "#d33682")
+     (320 . "#6c71c4")
+     (340 . "#dc322f")
+     (360 . "#cb4b16"))))
  '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

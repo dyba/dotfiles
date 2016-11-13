@@ -5,7 +5,8 @@
             [lein-pprint "1.1.1"]
             [codox "0.8.10"]
             [lein-set-version "0.4.1"]
-            [lein-environ "1.0.0"]]}
+            [lein-environ "1.0.0"]
+            [lein-midje "3.2.1"]]}
  :repl
  {:dependencies [[org.clojure/tools.nrepl "0.2.12"]]
   :plugins [[refactor-nrepl "2.3.0-SNAPSHOT"]

@@ -99,6 +99,9 @@
     ;; Elixir
     alchemist
     elixir-mode
+
+    ;; Go
+    go-mode
     
     ;; Global
     company
@@ -766,7 +769,7 @@
  '(fci-rule-color "#eee8d5")
  '(package-selected-packages
    (quote
-    (cider clj-refactor midje-mode zencoding-mode zenburn-theme yard-mode yaml-mode web-mode wc-mode tuareg tern-auto-complete solidity-mode smartparens slime-company sass-mode rust-mode ruby-tools rspec-mode robe rbenv rainbow-delimiters racket-mode perspective neotree magit js-comint inf-clojure helm-robe helm-projectile helm-git helm-flyspell helm-ack feature-mode enh-ruby-mode elm-mode edts dockerfile-mode company-inf-ruby company-ghci company-ghc color-theme-sanityinc-solarized coffee-mode clojure-mode-extra-font-locking chess auto-complete-auctex alchemist ac-js2)))
+    (helm-cider helm-cider-history ac-cider clj-refactor midje-mode zencoding-mode zenburn-theme yard-mode yaml-mode web-mode wc-mode tuareg tern-auto-complete solidity-mode smartparens slime-company sass-mode rust-mode ruby-tools rspec-mode robe rbenv rainbow-delimiters racket-mode perspective neotree magit js-comint inf-clojure helm-robe helm-projectile helm-git helm-flyspell helm-ack feature-mode enh-ruby-mode elm-mode edts dockerfile-mode company-inf-ruby company-ghci company-ghc color-theme-sanityinc-solarized coffee-mode clojure-mode-extra-font-locking chess auto-complete-auctex alchemist ac-js2)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote

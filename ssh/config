@@ -1,1 +1,2 @@
-/Users/ddyba/.ssh/config
+IdentityFile ~/.ssh/id_rsa
+AddKeysToAgent yes

@@ -1,5 +1,3 @@
-# TODO: Can we move some of these variables to .zshenv?
-
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -48,27 +46,13 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-# The editor to use when opening a bundled gem
-export BUNDLER_EDITOR='mvim'
-
-# Add .rbenv to your PATH
-export PATH=$HOME/.rbenv/bin:$PATH
-# Enable shims and autocompletion
 eval "$(rbenv init -)"
 
-# Add support for pyenv
-export PYENV_ROOT=/usr/local/var/pyenv # We are using HomeBrew's path to pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi # Enables shims and autocompletion
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
-export JENV_ROOT=/usr/local/var/jenv
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
-# Set up exenv
-export EXENV_ROOT=/usr/local/var/exenv
 if which exenv > /dev/null; then eval "$(exenv init -)"; fi
-
-# Add Postgres app
-export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
 
 # Aliases
 alias prettify_json="json_reformat" # Run 'brew install yajl' to get the `json_reformat` command
@@ -77,27 +61,10 @@ alias mdown="open -a /Applications/MacDown.app"
 # OPAM configuration
 . /Users/ddyba/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-# Go configuration
-export GOPATH=$HOME/Code/go
-export PATH=$PATH:$GOPATH/bin
-
-# Set Ansi Colors in iTerm2
-export CLICOLOR=1
-
-# Set colors to match iTerm2 Terminal Colors
-export TERM=xterm-256color
-
 # Aliases
 
 # added by travis gem
 [ -f /Users/ddyba/.travis/travis.sh ] && source /Users/ddyba/.travis/travis.sh
-
-# Eiffel configuration
-export ISE_EIFFEL=/Users/ddyba/Downloads/Eiffel_14.05
-export ISE_PLATFORM=macosx-x86-64
-
-# Installed Haskell scripts get dumped here by cabal
-export PATH=$HOME/.cabal/bin:$PATH
 
 # Enable Zsh completion for AWS
 # source /usr/local/share/zsh/site-functions/_aws
@@ -105,14 +72,21 @@ export PATH=$HOME/.cabal/bin:$PATH
 # Start tmux automatically
 [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 
-export EDITOR="vim"
-
-export JAVA_HOME=$(/usr/libexec/java_home)
-
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+# NVM Configuration
+. "/usr/local/opt/nvm/nvm.sh"
 
 # Enable command completion for awscli
 source /usr/local/share/zsh/site-functions/_aws
 
-alias emacs="/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs -nw"
+# Enable powerline daemon
+# . /Users/ddyba/.local/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
+
+#alias emacs="/usr/local/Cellar/emacs/25.1/Emacs.app/Contents/MacOS/Emacs -nw"
+
+# FIXME: Move this outside of .zshrc
+#
+# LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
+# if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
+#   . $LUNCHY_DIR/lunchy-completion.zsh
+# fi
+#

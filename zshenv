@@ -1,3 +1,5 @@
+export PATH=$PATH:.scripts/bin
+
 # The editor to use when opening a bundled gem
 export BUNDLER_EDITOR='mvim'
 

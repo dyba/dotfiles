@@ -1,2 +1,6 @@
 IdentityFile ~/.ssh/id_rsa
 AddKeysToAgent yes
+
+Host git-codecommit.*.amazonaws.com
+    User APKAIAD3MFQLXXJUZOXQ 
+    IdentityFile ~/.ssh/id_rsa

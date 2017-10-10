@@ -322,6 +322,18 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (global-linum-mode)
   (setq projectile-tags-command "~/.scripts/bin/emacs-ctags")
+
+  (setq cider-boot-parameters "cider repl -s wait")
+
+  (define-clojure-indent
+    (facts 'defun)
+    (fact 'defun)
+    (fact-group 'defun)
+    (silent-fact 'defun)
+    (future-fact 'defun)
+    (tabular 'defun)
+    (against-background 'defun)
+    (provided 0))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

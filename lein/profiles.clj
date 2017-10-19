@@ -1,6 +1,5 @@
 {:user
- {:jvm-opts ["-Xmx1024m", "-XX:PermSize=512m", "-XX:MaxPermSize=1024m"]
-  :signing {:gpg-key "16D15B5A"}
+ {:signing {:gpg-key "16D15B5A"}
   :plugins [[lein-exec "0.3.1"]
             [lein-pprint "1.1.1"]
             [codox "0.8.10"]

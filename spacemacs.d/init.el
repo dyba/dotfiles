@@ -326,10 +326,21 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (global-linum-mode)
   (setq projectile-tags-command "~/.scripts/bin/emacs-ctags")
-
   (setq cider-boot-parameters "cider repl -s wait")
 
+  (require 'clojure-mode)
   (define-clojure-indent
+    (defroutes 'defun)
+    (GET 2)
+    (POST 2)
+    (PUT 2)
+    (DELETE 2)
+    (HEAD 2)
+    (ANY 2)
+    (context 2)
+    (query 'defun)
+    (ident 'defun)
+    (render 'defun)
     (facts 'defun)
     (fact 'defun)
     (fact-group 'defun)

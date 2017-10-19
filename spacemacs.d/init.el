@@ -52,6 +52,7 @@ values."
      markdown
      org
      shell
+     java
      gtags
      ;; (shell :variables
      ;;        shell-default-height 30

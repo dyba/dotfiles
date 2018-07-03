@@ -4,10 +4,11 @@ export PATH=$PATH:.scripts/bin
 export BUNDLER_EDITOR='mvim'
 
 # Set up rbenv
-export PATH=$HOME/.rbenv/bin:$PATH
+export PATH=$PATH:$HOME/.rbenv/bin
 
 # Set up pyenv
 export PYENV_ROOT=/usr/local/var/pyenv
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 # Set up jenv
 export JENV_ROOT=/usr/local/var/jenv
@@ -24,6 +25,8 @@ export PATH=$PATH:$GOPATH/bin
 
 # Add Postgres app
 export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
+
+export PATH=~/.scripts/bin:$PATH
 
 # Set Ansi Colors in iTerm2
 export CLICOLOR=1
@@ -47,5 +50,5 @@ export EDITOR="vim"
 export NVM_DIR=~/.nvm
 
 # AWS environment variables
-export AWS_PROFILE=dev
-export AWS_DEFAULT_PROFILE=dev
+export AWS_PROFILE=default
+export AWS_DEFAULT_PROFILE=default

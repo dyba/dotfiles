@@ -61,6 +61,7 @@ Plugin 'tpope/vim-cucumber'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 
+Plugin 'ericpruitt/tmux.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'elzr/vim-json'
 Plugin 'briancollins/vim-jst'
@@ -76,7 +77,7 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'wting/rust.vim'
 Plugin 'groenewege/vim-less'
-Plugin 'lambdatoast/elm.vim'
+Plugin 'ElmCast/elm-vim'
 Plugin 'slim-template/vim-slim'
 Plugin 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
 Plugin 'jnurmine/Zenburn'
@@ -85,6 +86,7 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'JulesWang/css.vim'
 Plugin 'jvirtanen/vim-octave'
 Plugin 'fatih/vim-go'
+Plugin 'vim-scripts/indentpython.vim'
 Plugin 'tomlion/vim-solidity'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
@@ -156,6 +158,8 @@ let g:user_emmet_settings = {
 			\ }
 			\}
 
+"================= elm-vim Settings ==================="
+let g:elm_format_autosave = 1
 
 "================= CtrlP Settings ==================="
 nnoremap <leader>. :CtrlP<cr>
@@ -184,6 +188,8 @@ nnoremap <C-n> :NERDTreeToggle<cr>
 " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set noshowmode
 
+au FileType go nmap <leader>r <Plug>(go-run)
+
 au BufNewFile,BufReadPost *.c setl shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufReadPost *.py setl shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufReadPost *.rb setl shiftwidth=2 softtabstop=2 expandtab
@@ -191,6 +197,7 @@ au BufNewFile,BufReadPost *.liquid setl shiftwidth=4 softtabstop=4 expandtab
 au BufNewFile,BufReadPost *.rake setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.feature setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Rakefile setl shiftwidth=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost Berksfile setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Gemfile  setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.gemspec setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost Guardfile  setl shiftwidth=2 softtabstop=2 expandtab
@@ -217,15 +224,22 @@ au BufNewFile,BufReadPost *.xml setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.xsd setl shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.go set noexpandtab tabstop=4 shiftwidth=4
 au BufNewFile,BufReadPost *.css setl shiftwidth=2 softtabstop=2 expandtab
-au BufNewFile,BufReadPost *.py setl tabstop=8 expandtab shiftwidth=4 softtabstop=4
+au BufNewFile,BufRead *.tpl :set ft=php
+
+" Python files
+au BufNewFile,BufRead *.py set tabstop=4 shiftwidth=4 softtabstop=4 textwidth=79 autoindent expandtab fileformat=unix
+" YAML files
+au BufNewFile,BufRead *.yaml set tabstop=2 shiftwidth=2 softtabstop=2 textwidth=79 autoindent expandtab fileformat=unix
 
 au BufNewFile,BufRead [vV]agrantfile set filetype=ruby
 au BufNewFile,BufRead Guardfile set filetype=ruby
 au BufNewFile,BufRead Gemfile set filetype=ruby
+au BufNewFile,BufRead Berksfile set filetype=ruby
 au BufNewFile,BufRead *.thor set filetype=ruby
 au BufNewFile,BufRead *.gemspec set filetype=ruby
 
-au FileType go au BufWritePre <buffer> Fmt
+autocmd BufNewFile,BufReadPost *.template setl shiftwidth=2 softtabstop=2 expandtab
+autocmd BufNewFile,BufRead *.template set filetype=javascript
 
 augroup filetypedetect
   au! BufRead,BufNewFile *.m,*.oct set filetype=octave

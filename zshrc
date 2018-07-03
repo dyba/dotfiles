@@ -48,11 +48,9 @@ source $ZSH/oh-my-zsh.sh
 
 eval "$(rbenv init -)"
 
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if type jenv > /dev/null; then eval "$(jenv init -)"; fi
 
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
-
-if which exenv > /dev/null; then eval "$(exenv init -)"; fi
+if type exenv > /dev/null; then eval "$(exenv init -)"; fi
 
 # Aliases
 alias prettify_json="json_reformat" # Run 'brew install yajl' to get the `json_reformat` command
@@ -70,7 +68,7 @@ alias mdown="open -a /Applications/MacDown.app"
 # source /usr/local/share/zsh/site-functions/_aws
 
 # Start tmux automatically
-[[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+# [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 
 # NVM Configuration
 . "/usr/local/opt/nvm/nvm.sh"
@@ -89,4 +87,11 @@ source /usr/local/share/zsh/site-functions/_aws
 # if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
 #   . $LUNCHY_DIR/lunchy-completion.zsh
 # fi
-#
+export PATH="/usr/local/opt/qt/bin:$PATH"
+export PATH="/usr/local/opt/qt/bin:$PATH"
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+USER_BASE_PATH=$(python -m site --user-base)
+export PATH=$PATH:$USER_BASE_PATH/bin

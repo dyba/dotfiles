@@ -328,7 +328,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; (setq-default js2-basic-offset 2)
   ;; (setq-default js-indent-level 2)
   (setq-default js-basic-offset 4
-                js-indent-level 4)
+                js-indent-level 2)
   (with-eval-after-load 'helm
     (setq helm-display-function 'helm-default-display-buffer))
   )

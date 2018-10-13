@@ -31,3 +31,20 @@ If the language is not supported:
 ```
 gtags --gtagslabel=pygments
 ```
+
+## NeoTree Icons
+
+```
+SPC SPC package-install
+```
+
+Install the following packages:
+
+```
+all-the-icons
+all-the-icons-ivy
+all-the-icons-gnus
+all-the-icons-dired
+```
+
+Install [these fonts](https://github.com/domtronn/all-the-icons.el/tree/master/fonts).

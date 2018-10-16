@@ -360,6 +360,8 @@ you should place your code here."
                 web-mode-attr-indent-offset 2
                 )
 
+  (require 'clojure-mode)
+
   (define-clojure-indent
     (defroutes 'defun)
     (GET 2)

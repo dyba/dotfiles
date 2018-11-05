@@ -33,7 +33,8 @@ values."
    dotspacemacs-configuration-layers
    '(
      (c-c++ :variables
-            c-c++-default-mode-for-headers 'c++-mode)
+            c-c++-default-mode-for-headers 'c++-mode
+            c-c++-enable-clang-support t)
      haskell
      erlang
      elixir
@@ -335,6 +336,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq-default git-magit-status-fullscreen t)
   ;; (setq-default js2-basic-offset 2)
   ;; (setq-default js-indent-level 2)
+
+
+  ;; Temporary fix
+  ;; See https://github.com/vspinu/sesman/issues/10
+  (defalias 'sesman-linked-sessions 'sesman--linked-sessions)
+
   (with-eval-after-load 'helm
     (setq helm-display-function 'helm-default-display-buffer))
   )
@@ -368,6 +375,8 @@ you should place your code here."
   (add-hook 'c++-mode-hook 'clang-format-bindings)
   (defun clang-format-bindings ()
     (define-key c++-mode-map [tab] 'clang-format-buffer))
+
+  (setq clang-format-executable "/usr/local/bin/clang-format")
 
   ;; (require 'clojure-mode)
 

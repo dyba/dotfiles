@@ -48,3 +48,9 @@ all-the-icons-dired
 ```
 
 Install [these fonts](https://github.com/domtronn/all-the-icons.el/tree/master/fonts).
+
+## C++
+
+```
+brew install clang-format
+```

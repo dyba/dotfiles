@@ -2,9 +2,15 @@
 # This is the Git config file
 ##
 
-[user]
-	name = Daniel Dyba
-	email = daniel.dyba@gmail.com
+[includeIf "gitdir/i:~/Code/work/"]
+	path = ~/.gitconfig.work
+
+[includeIf "gitdir/i:~/Code/personal/"]
+	path = ~/.gitconfig.personal
+
+[includeIf "gitdir/i:~/.dotfiles/"]
+	path = ~/.gitconfig.personal
+
 [color]
 	diff = auto
 	branch = auto

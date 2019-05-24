@@ -74,7 +74,7 @@ values."
      shell
      java
      react
-     gtags
+     (gtags :variables gtags-enable-by-default t)
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -361,6 +361,9 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (require 'all-the-icons)
+
+  (setq spacemacs-default-jump-handlers
+        (remove 'evil-goto-definition spacemacs-default-jump-handlers))
 
   (global-linum-mode)
   (setq projectile-tags-command "~/.scripts/bin/emacs-ctags")

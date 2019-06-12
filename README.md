@@ -33,11 +33,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
   </tr>
 </table>
 
-| Name | Version        |
-|------+----------------|
-| Git  | 2.13 or higher |
-|      |                |
-
 ## Getting Started
 
 * Clone the dotfiles repository

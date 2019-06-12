@@ -1,5 +1,9 @@
 # Spacemacs Configuration
 
+## Prerequisities
+
+* Install [Source Code Pro font](https://github.com/adobe-fonts/source-code-pro)
+
 ## JavaScript
 
 Set a default Node version using [nvm](https://github.com/creationix/nvm):

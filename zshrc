@@ -46,11 +46,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-eval "$(rbenv init -)"
-
-if type jenv > /dev/null; then eval "$(jenv init -)"; fi
-
-if type exenv > /dev/null; then eval "$(exenv init -)"; fi
+[ -x "$(command -v rbenv)" ] && eval "$(rbenv init -)"
+[ -x "$(command -v jenv)" ] && eval "$(jenv init -)"
+[ -x "$(command -v exenv)" ] && eval "$(exenv init -)"
 
 # Aliases
 alias prettify_json="json_reformat" # Run 'brew install yajl' to get the `json_reformat` command
@@ -71,7 +69,7 @@ alias mdown="open -a /Applications/MacDown.app"
 # [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 
 # NVM Configuration
-. "/usr/local/opt/nvm/nvm.sh"
+[ -x "$(command -v nvm)" ] && . "/usr/local/opt/nvm/nvm.sh"
 
 # Enable command completion for awscli
 source /usr/local/share/zsh/site-functions/_aws
@@ -96,7 +94,5 @@ export LANG=en_US.UTF-8
 USER_BASE_PATH=$(python -m site --user-base)
 export PATH=$PATH:$USER_BASE_PATH/bin
 
-if [ -d "$HOME/.asdf" ]; then
-  . $HOME/.asdf/asdf.sh
-  . $HOME/.asdf/completions/asdf.bash
-fi
+[ -n "$(type asdf)" ] && [ -d $HOME/.asdf ] && . $HOME/.asdf/asdf.sh
+[ -n "$(type asdf)" ] && [ -d $HOME/.asdf ] && . $HOME/.asdf/completions/asdf.bash

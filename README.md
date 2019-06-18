@@ -73,3 +73,9 @@ brew link emacs-plus
 ```
 
 After that, link your `.spacemacs` file in your home directory to `~/.dotfiles/spacemacs.d/init.el`.
+
+## Powerline
+
+```
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+```

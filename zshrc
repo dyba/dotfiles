@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -40,7 +40,7 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -94,5 +94,11 @@ export LANG=en_US.UTF-8
 USER_BASE_PATH=$(python -m site --user-base)
 export PATH=$PATH:$USER_BASE_PATH/bin
 
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
 [ -n "$(type asdf)" ] && [ -d $HOME/.asdf ] && . $HOME/.asdf/asdf.sh
 [ -n "$(type asdf)" ] && [ -d $HOME/.asdf ] && . $HOME/.asdf/completions/asdf.bash
+
+if [ -d "$HOME/Tools/google-cloud-sdk" ]; then
+    export PATH=$PATH:$HOME/Tools/google-cloud-sdk/bin
+fi

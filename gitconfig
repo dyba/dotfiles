@@ -11,6 +11,9 @@
 [includeIf "gitdir/i:~/.dotfiles/"]
 	path = ~/.gitconfig.personal
 
+[includeIf "gitdir/i:~/Code/go/"]
+	path = ~/.gitconfig.personal
+
 [color]
 	diff = auto
 	branch = auto

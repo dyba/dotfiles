@@ -58,7 +58,9 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; ivy
-     helm
+     (helm :variables
+           helm-locate-fuzzy-match nil
+           helm-locate-command "mdfind -name %s %s")
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-return-key-behavior nil

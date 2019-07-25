@@ -49,7 +49,9 @@ values."
      (ruby :variables ruby-enable-enh-ruby-mode t)
      (go :variables go-use-gometalinter t)
      javascript
-     python
+     (python :variables
+             python-enable-yapf-format-on-save t
+             python-shell-interpreter "~/.asdf/shims/python")
      elm
      docker
      ;; ----------------------------------------------------------------

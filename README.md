@@ -79,3 +79,16 @@ After that, link your `.spacemacs` file in your home directory to `~/.dotfiles/s
 ```
 git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 ```
+
+## Org-Mode
+
+* Download (minted.sty](https://github.com/gpoore/minted/blob/master/source/minted.sty)
+* Put the file in the correct directory
+* `kpsewhich -var-value TEXMFLOCAL`
+* Download Python 2.7.17: `asdf install python 2.7.17`
+* Download Pygments: `pip install Pygments`
+* Refresh your shims: `asdf reshim python 2.7.17`
+
+```
+curl -o "$(kpsewhich -var-value TEXMFLOCAL)/minted.sty" https://github.com/gpoore/minted/blob/master/source/minted.sty
+```

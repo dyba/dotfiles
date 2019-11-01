@@ -426,6 +426,15 @@ you should place your code here."
            (require 'figwheel-sidecar.repl-api)
            (figwheel-sidecar.repl-api/start-figwheel!)
            (figwheel-sidecar.repl-api/cljs-repl))")
+  (inf-ruby-switch-setup)
+
+  ;; Org mode
+  (setq org-src-tab-acts-natively t
+        org-link-abbrev-alist '(("github" . "https://github.com/%s"))
+        org-latex-listings 'minted
+        org-latex-packages-alist '(("" "minted"))
+        org-latex-pdf-process '("pdflatex -shell-escape -output-directory %o %f"
+                                "pdflatex -shell-escape -output-directory %o %f"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

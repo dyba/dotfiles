@@ -53,6 +53,7 @@ source $ZSH/oh-my-zsh.sh
 [ -x "$(command -v rbenv)" ] && eval "$(rbenv init -)"
 [ -x "$(command -v jenv)" ] && eval "$(jenv init -)"
 [ -x "$(command -v exenv)" ] && eval "$(exenv init -)"
+[ -x "$(command -v scmpuff)" ] && eval "$(scmpuff init -s)"
 
 # Aliases
 alias prettify_json="json_reformat" # Run 'brew install yajl' to get the `json_reformat` command

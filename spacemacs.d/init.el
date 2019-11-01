@@ -432,6 +432,8 @@ you should place your code here."
   (setq org-src-tab-acts-natively t
         org-link-abbrev-alist '(("github" . "https://github.com/%s"))
         org-latex-listings 'minted
+        org-latex-minted-options '(("breaklines" "true")
+                                   ("breakanywhere" "true"))
         org-latex-packages-alist '(("" "minted"))
         org-latex-pdf-process '("pdflatex -shell-escape -output-directory %o %f"
                                 "pdflatex -shell-escape -output-directory %o %f"))

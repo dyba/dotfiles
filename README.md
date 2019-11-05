@@ -92,3 +92,9 @@ git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerl
 ```
 curl -o "$(kpsewhich -var-value TEXMFLOCAL)/minted.sty" https://github.com/gpoore/minted/blob/master/source/minted.sty
 ```
+
+## VSCode
+
+```
+brew install yapf # Python formatting
+```

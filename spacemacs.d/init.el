@@ -32,6 +32,8 @@ values."
 
    dotspacemacs-configuration-layers
    '(
+     rust
+     graphviz
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode
             c-c++-enable-clang-support t)
@@ -43,7 +45,8 @@ values."
      sql
      html
      yaml
-     clojure
+     (clojure :variables
+              clojure-enable-clj-refactor t)
      semantic
      (typescript :variables typescript-fmt-on-save t)
      (ruby :variables ruby-enable-enh-ruby-mode t)
@@ -356,6 +359,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (with-eval-after-load 'helm
     (setq helm-display-function 'helm-default-display-buffer))
+
   )
 
 (defun dotspacemacs/user-config ()
@@ -385,6 +389,11 @@ you should place your code here."
                 web-mode-code-indent-offset 2
                 web-mode-attr-indent-offset 2
                 )
+
+  (with-eval-after-load 'web-mode
+    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
 
   (global-set-key [C-M-tab] 'clang-format-region)
   (add-hook 'c++-mode-hook 'clang-format-bindings)
@@ -437,6 +446,67 @@ you should place your code here."
         org-latex-packages-alist '(("" "minted"))
         org-latex-pdf-process '("pdflatex -shell-escape -output-directory %o %f"
                                 "pdflatex -shell-escape -output-directory %o %f"))
+
+  ;; Support for Fira Code Symbol font and ligatures
+  ;; See https://github.com/tonsky/FiraCode/wiki/Emacs-instructions#using-prettify-symbols
+  (defun fira-code-mode--make-alist (list)
+    "Generate prettify-symbols alist from LIST."
+    (let ((idx -1))
+      (mapcar
+       (lambda (s)
+         (setq idx (1+ idx))
+         (let* ((code (+ #Xe100 idx))
+                (width (string-width s))
+                (prefix ())
+                (suffix '(?\s (Br . Br)))
+                (n 1))
+           (while (< n width)
+             (setq prefix (append prefix '(?\s (Br . Bl))))
+             (setq n (1+ n)))
+           (cons s (append prefix suffix (list (decode-char 'ucs code))))))
+       list)))
+
+  (defconst fira-code-mode--ligatures
+    '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\"
+      "{-" "[]" "::" ":::" ":=" "!!" "!=" "!==" "-}"
+      "--" "---" "-->" "->" "->>" "-<" "-<<" "-~"
+      "#{" "#[" "##" "###" "####" "#(" "#?" "#_" "#_("
+      ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*"
+      "/**" "/=" "/==" "/>" "//" "///" "&&" "||" "||="
+      "|=" "|>" "^=" "$>" "++" "+++" "+>" "=:=" "=="
+      "===" "==>" "=>" "=>>" "<=" "=<<" "=/=" ">-" ">="
+      ">=>" ">>" ">>-" ">>=" ">>>" "<*" "<*>" "<|" "<|>"
+      "<$" "<$>" "<!--" "<-" "<--" "<->" "<+" "<+>" "<="
+      "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<" "<~"
+      "<~~" "</" "</>" "~@" "~-" "~=" "~>" "~~" "~~>" "%%"
+      "x" ":" "+" "+" "*"))
+
+  (defvar fira-code-mode--old-prettify-alist)
+
+  (defun fira-code-mode--enable ()
+    "Enable Fira Code ligatures in current buffer."
+    (setq-local fira-code-mode--old-prettify-alist prettify-symbols-alist)
+    (setq-local prettify-symbols-alist (append (fira-code-mode--make-alist fira-code-mode--ligatures) fira-code-mode--old-prettify-alist))
+    (prettify-symbols-mode t))
+
+  (defun fira-code-mode--disable ()
+    "Disable Fira Code ligatures in current buffer."
+    (setq-local prettify-symbols-alist fira-code-mode--old-prettify-alist)
+    (prettify-symbols-mode -1))
+
+  (define-minor-mode fira-code-mode
+    "Fira Code ligatures minor mode"
+    :lighter " Fira Code"
+    (setq-local prettify-symbols-unprettify-at-point 'right-edge)
+    (if fira-code-mode
+        (fira-code-mode--enable)
+      (fira-code-mode--disable)))
+
+  (defun fira-code-mode--setup ()
+    "Setup Fira Code Symbols"
+    (set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol"))
+
+  (provide 'fira-code-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -449,7 +519,7 @@ you should place your code here."
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (terraform-mode hcl-mode yasnippet-snippets company-quickhelp helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern company-statistics company-go company-emacs-eclim company-cabal company-c-headers company-anaconda clojure-snippets auto-yasnippet ac-ispell auto-complete stickyfunc-enhance srefactor disaster cmake-mode clang-format tide typescript-mode helm-cider helm-cider-history memoize all-the-icons-dired all-the-icons-gnus all-the-icons-ivy all-the-icons flycheck-gometalinter enh-ruby-mode intero hlint-refactor hindent helm-hoogle haskell-snippets flycheck-haskell company-ghci company-ghc ghc haskell-mode cmm-mode erlang ob-elixir flycheck-mix flycheck-credo alchemist company elixir-mode nginx-mode dockerfile-mode docker tablist docker-tramp org-mime wgrep smex ivy-hydra counsel-projectile counsel swiper ivy org-category-capture dash-functional ghub let-alist sql-indent groovy-mode eclim flycheck-pos-tip pos-tip flycheck-elm flycheck helm-gtags ggtags tern web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode yaml-mode solidity-mode clj-refactor inflections edn paredit peg cider-eval-sexp-fu cider seq queue clojure-mode yapfify xterm-color web-beautify shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements multi-term livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc hy-mode helm-pydoc eshell-z eshell-prompt-extras esh-help cython-mode coffee-mode anaconda-mode pythonic rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby go-guru go-eldoc go-mode elm-mode smeargle orgit org-projectile org-present org-pomodoro alert log4e gntp org-download mmm-mode markdown-toc markdown-mode magit-gitflow htmlize helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md evil-magit magit magit-popup git-commit with-editor ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+    (toml-mode racer flycheck-rust cargo rust-mode graphviz-dot-mode terraform-mode hcl-mode yasnippet-snippets company-quickhelp helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern company-statistics company-go company-emacs-eclim company-cabal company-c-headers company-anaconda clojure-snippets auto-yasnippet ac-ispell auto-complete stickyfunc-enhance srefactor disaster cmake-mode clang-format tide typescript-mode helm-cider helm-cider-history memoize all-the-icons-dired all-the-icons-gnus all-the-icons-ivy all-the-icons flycheck-gometalinter enh-ruby-mode intero hlint-refactor hindent helm-hoogle haskell-snippets flycheck-haskell company-ghci company-ghc ghc haskell-mode cmm-mode erlang ob-elixir flycheck-mix flycheck-credo alchemist company elixir-mode nginx-mode dockerfile-mode docker tablist docker-tramp org-mime wgrep smex ivy-hydra counsel-projectile counsel swiper ivy org-category-capture dash-functional ghub let-alist sql-indent groovy-mode eclim flycheck-pos-tip pos-tip flycheck-elm flycheck helm-gtags ggtags tern web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode yaml-mode solidity-mode clj-refactor inflections edn paredit peg cider-eval-sexp-fu cider seq queue clojure-mode yapfify xterm-color web-beautify shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements multi-term livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc hy-mode helm-pydoc eshell-z eshell-prompt-extras esh-help cython-mode coffee-mode anaconda-mode pythonic rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby go-guru go-eldoc go-mode elm-mode smeargle orgit org-projectile org-present org-pomodoro alert log4e gntp org-download mmm-mode markdown-toc markdown-mode magit-gitflow htmlize helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md evil-magit magit magit-popup git-commit with-editor ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

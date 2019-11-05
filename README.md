@@ -82,7 +82,7 @@ git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerl
 
 ## Org-Mode
 
-* Download (minted.sty](https://github.com/gpoore/minted/blob/master/source/minted.sty)
+* Download [minted.sty](https://github.com/gpoore/minted/blob/master/source/minted.sty)
 * Put the file in the correct directory
 * `kpsewhich -var-value TEXMFLOCAL`
 * Download Python 2.7.17: `asdf install python 2.7.17`

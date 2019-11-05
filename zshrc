@@ -104,6 +104,21 @@ export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 [ -n "$(type asdf)" ] && [ -d $HOME/.asdf ] && . $HOME/.asdf/asdf.sh
 [ -n "$(type asdf)" ] && [ -d $HOME/.asdf ] && . $HOME/.asdf/completions/asdf.bash
 
-if [ -d "$HOME/Tools/google-cloud-sdk" ]; then
-    export PATH=$PATH:$HOME/Tools/google-cloud-sdk/bin
+# if [ -d "$HOME/Tools/google-cloud-sdk" ]; then
+#     export PATH=$PATH:$HOME/Tools/google-cloud-sdk/bin
+# fi
+
+if [ -d "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]; then
+  . "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+  . "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 fi
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/ddyba/.asdf/installs/nodejs/10.16.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/ddyba/.asdf/installs/nodejs/10.16.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/ddyba/.asdf/installs/nodejs/10.16.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/ddyba/.asdf/installs/nodejs/10.16.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/ddyba/.asdf/installs/nodejs/10.16.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/ddyba/.asdf/installs/nodejs/10.16.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh

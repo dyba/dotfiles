@@ -8,11 +8,17 @@
 [includeIf "gitdir/i:~/Code/personal/"]
 	path = ~/.gitconfig.personal
 
+[includeIf "gitdir/i:~/Courses/"]
+	path = ~/.gitconfig.personal
+
 [includeIf "gitdir/i:~/.dotfiles/"]
 	path = ~/.gitconfig.personal
 
 [includeIf "gitdir/i:~/Code/go/"]
 	path = ~/.gitconfig.personal
+
+[includeIf "gitdir/i:~/Clients/"]
+	path = ~/.gitconfig.work
 
 [color]
 	diff = auto

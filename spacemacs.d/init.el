@@ -42,7 +42,7 @@ values."
      erlang
      elixir
      emoji
-     lsp
+     ;; lsp - failed tests
      nginx
      octave
      slack

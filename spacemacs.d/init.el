@@ -32,6 +32,7 @@ values."
 
    dotspacemacs-configuration-layers
    '(
+     csv
      rust
      graphviz
      (c-c++ :variables

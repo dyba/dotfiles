@@ -466,6 +466,9 @@ you should place your code here."
         org-latex-pdf-process '("pdflatex -shell-escape -output-directory %o %f"
                                 "pdflatex -shell-escape -output-directory %o %f"))
 
+  ;; Setup GOPATH
+  (exec-path-from-shell-copy-env "GOPATH")
+
   ;; Support for Fira Code Symbol font and ligatures
   ;; See https://github.com/tonsky/FiraCode/wiki/Emacs-instructions#using-prettify-symbols
   (defun fira-code-mode--make-alist (list)

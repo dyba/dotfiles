@@ -146,3 +146,6 @@ export PATH="/usr/local/opt/curl/bin:$PATH"
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 
 [[ -d $ZSH_CUSTOM/plugins/fzf-tab ]] && source $ZSH_CUSTOM/plugins/fzf-tab/fzf-tab.plugin.zsh
+
+# Aliases for Work
+[[ $(scutil --get LocalHostName) == 'Daniels-MacBook-Pro-6' ]] && source $HOME/.dotfiles/zsh/work-aliases.zsh

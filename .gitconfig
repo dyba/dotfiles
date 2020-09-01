@@ -1,0 +1,100 @@
+##
+# This is the Git config file
+##
+
+[includeIf "gitdir/i:~/Code/work/"]
+	path = ~/.gitconfig.work
+
+[includeIf "gitdir/i:~/Code/personal/"]
+	path = ~/.gitconfig.personal
+
+[includeIf "gitdir/i:~/Courses/"]
+	path = ~/.gitconfig.personal
+
+[includeIf "gitdir/i:~/.dotfiles/"]
+	path = ~/.gitconfig.personal
+
+[includeIf "gitdir/i:~/Code/go/"]
+	path = ~/.gitconfig.personal
+
+[includeIf "gitdir/i:~/Clients/"]
+	path = ~/.gitconfig.work
+
+[alias]
+	co = checkout
+	b = branch
+	s = status
+	c = commit
+	m = merge
+	l = log
+	a = add
+	f = fetch
+	ps = push
+	pl = pull
+	sl = shortlog
+	cf = config
+	cp = cherry-pick
+	mg = merge
+	d = difftool
+	cl = clone
+	rv = remote -v
+	r = remote
+	# rm-del
+	#   Deletes all files that have been marked as deleted when running `git status`.
+	xargs-del = diff --diff-filter=D --name-only -z
+	lg = log --graph --all --pretty=format:'%C(yellow)%h%C(reset) - %C(normal)%ar%C(reset) %C(blue)%an%C(reset) %C(yellow)%s%C(reset) %C(normal)%D%C(reset)'
+	ctags = !.git/hooks/ctags
+	etags = !.git/hooks/etags
+
+[color]
+	diff = auto
+	branch = auto
+	interactive = auto
+	ui = auto
+
+[core]
+	editor = vim -f
+	pager = delta # Requires `brew install git-delta`
+
+[delta]
+	side-by-side = true
+	whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+	syntax-theme = Solarized (dark)
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
+
+[diff]
+	tool = Kaleidoscope
+
+[difftool]
+	prompt = false
+
+[interactive]
+	diffFilter = delta --color-only # Requires `brew install git-delta`
+
+[push]
+	default = simple
+
+[merge]
+	tool = Kaleidoscope
+
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+
+[mergetool]
+	prompt = false
+
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+
+[init]
+	templatedir = ~/.git_template

@@ -47,13 +47,15 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.dotfiles/zsh/asdf.zsh
+source $HOME/.dotfiles/zsh/scmpuff.zsh
+source $HOME/.dotfiles/zsh/fzf-tab.zsh
 
 # Customize to your needs...
 
 [ -x "$(command -v rbenv)" ] && eval "$(rbenv init -)"
 [ -x "$(command -v jenv)" ] && eval "$(jenv init -)"
 [ -x "$(command -v exenv)" ] && eval "$(exenv init -)"
-[ -x "$(command -v scmpuff)" ] && eval "$(scmpuff init -s)"
 
 # Aliases
 alias prettify_json="json_reformat" # Run 'brew install yajl' to get the `json_reformat` command
@@ -101,9 +103,6 @@ export PATH=$PATH:$USER_BASE_PATH/bin
 
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
-[ -n "$(type asdf)" ] && [ -d $HOME/.asdf ] && . $HOME/.asdf/asdf.sh
-[ -n "$(type asdf)" ] && [ -d $HOME/.asdf ] && . $HOME/.asdf/completions/asdf.bash
-
 # if [ -d "$HOME/Tools/google-cloud-sdk" ]; then
 #     export PATH=$PATH:$HOME/Tools/google-cloud-sdk/bin
 # fi
@@ -145,7 +144,7 @@ export PATH="/usr/local/opt/curl/bin:$PATH"
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 
-[[ -d $ZSH_CUSTOM/plugins/fzf-tab ]] && source $ZSH_CUSTOM/plugins/fzf-tab/fzf-tab.plugin.zsh
-
 # Aliases for Work
 [[ $(scutil --get LocalHostName) == 'Daniels-MacBook-Pro-6' ]] && source $HOME/.dotfiles/zsh/work-aliases.zsh
+
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"

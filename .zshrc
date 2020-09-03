@@ -50,6 +50,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.dotfiles/zsh/asdf.zsh
 source $HOME/.dotfiles/zsh/scmpuff.zsh
 source $HOME/.dotfiles/zsh/fzf-tab.zsh
+source $HOME/.dotfiles/zsh/git.zsh
 
 # Customize to your needs...
 

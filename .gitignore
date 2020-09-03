@@ -1,3 +1,5 @@
 *.swp
 tmp/
 *~
+zsh/work-aliases.zsh
+zsh/*.work.zsh

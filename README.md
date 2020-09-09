@@ -98,3 +98,7 @@ curl -o "$(kpsewhich -var-value TEXMFLOCAL)/minted.sty" https://github.com/gpoor
 ```
 brew install yapf # Python formatting
 ```
+
+# Ergodox Layout
+
+https://configure.ergodox-ez.com/ergodox-ez/layouts/N4Ya0/latest/0

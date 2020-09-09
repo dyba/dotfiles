@@ -67,11 +67,11 @@
 	pager = delta # Requires `brew install git-delta`
 
 [delta]
-	side-by-side = true
+	features = side-by-side unobtrusive-line-numbers decorations
+	syntax-theme = Solarized (dark)
 	whitespace-error-style = 22 reverse
 
 [delta "decorations"]
-	syntax-theme = Solarized (dark)
 	commit-decoration-style = bold yellow box ul
 	file-style = bold yellow ul
 	file-decoration-style = none

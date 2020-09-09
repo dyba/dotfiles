@@ -21,24 +21,34 @@
 	path = ~/.gitconfig.work
 
 [alias]
-	co = checkout
+	a = add --all
+	ai = add -i
 	b = branch
-	s = status
+	bd = branch -d
+	bdd = branch -D
+	br = branch -r
 	c = commit
-	m = merge
-	l = log
-	a = add
-	f = fetch
-	ps = push
-	pl = pull
-	sl = shortlog
+	cd = commit --amend
 	cf = config
-	cp = cherry-pick
-	mg = merge
-	d = difftool
 	cl = clone
-	rv = remote -v
+	cm = commit -m
+	co = checkout
+	cp = cherry-pick
+	d = diff
+	dc = diff --cached
+	dp = diff --patch
+	dt = difftool
+	f = fetch
+	l = log
+	m = merge
+	mg = merge
+	pl = pull
+	ps = push
+	plom = pull origin master
 	r = remote
+	rv = remote -v
+	s = status
+	sl = shortlog
 	# rm-del
 	#   Deletes all files that have been marked as deleted when running `git status`.
 	xargs-del = diff --diff-filter=D --name-only -z

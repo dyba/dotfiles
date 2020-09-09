@@ -51,6 +51,8 @@ source $HOME/.dotfiles/zsh/asdf.zsh
 source $HOME/.dotfiles/zsh/scmpuff.zsh
 source $HOME/.dotfiles/zsh/fzf-tab.zsh
 source $HOME/.dotfiles/zsh/git.zsh
+source $HOME/.dotfiles/zsh/websites.zsh
+source $HOME/.dotfiles/zsh/tpm.zsh
 
 # Customize to your needs...
 

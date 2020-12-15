@@ -454,13 +454,13 @@ you should place your code here."
   (add-to-list 'auto-mode-alist '("Appfile$" . ruby-mode))
 
   ;; deft
-  (setq deft-directory "~/Documents/Slipbox")
-  (setq deft-extensions '("org" "md" "txt"))
+  (setq deft-directory "~/Documents/notes"
+        deft-extensions '("org" "md" "txt"))
 
   ;; sql
   (require 'sqlformat)
-  (setq sqlformat-command 'pgformatter)
-  (setq sqlformat-args '("-s2" "-g" "-f2" "-u2" "-U1"))
+  (setq sqlformat-command 'pgformatter
+        sqlformat-args '("-s2" "-g" "-f2" "-u2" "-U1"))
   (add-hook 'sql-mode-hook 'sqlformat-on-save-mode)
 
   ;; ejc-slq
@@ -559,21 +559,21 @@ you should place your code here."
     (set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol"))
 
   (provide 'fira-code-mode)
-  )
+  
 
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol nil)
- '(package-selected-packages
-   '(deft ejc-sql direx clomacs parseedn parseclj a sqlformat sqlup-mode xkcd spotify slack emojify circe oauth2 websocket ht helm-spotify-plus multi flyspell-correct-helm flyspell-correct emoji-cheat-sheet-plus company-emoji auto-dictionary toml-mode racer flycheck-rust cargo rust-mode graphviz-dot-mode terraform-mode hcl-mode yasnippet-snippets company-quickhelp helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern company-statistics company-go company-emacs-eclim company-cabal company-c-headers company-anaconda clojure-snippets auto-yasnippet ac-ispell auto-complete stickyfunc-enhance srefactor disaster cmake-mode clang-format tide typescript-mode helm-cider helm-cider-history memoize all-the-icons-dired all-the-icons-gnus all-the-icons-ivy all-the-icons flycheck-gometalinter enh-ruby-mode intero hlint-refactor hindent helm-hoogle haskell-snippets flycheck-haskell company-ghci company-ghc ghc haskell-mode cmm-mode erlang ob-elixir flycheck-mix flycheck-credo alchemist company elixir-mode nginx-mode dockerfile-mode docker tablist docker-tramp org-mime wgrep smex ivy-hydra counsel-projectile counsel swiper ivy org-category-capture dash-functional ghub let-alist sql-indent groovy-mode eclim flycheck-pos-tip pos-tip flycheck-elm flycheck helm-gtags ggtags tern web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode yaml-mode solidity-mode clj-refactor inflections edn paredit peg cider-eval-sexp-fu cider seq queue clojure-mode yapfify xterm-color web-beautify shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements multi-term livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc hy-mode helm-pydoc eshell-z eshell-prompt-extras esh-help cython-mode coffee-mode anaconda-mode pythonic rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby go-guru go-eldoc go-mode elm-mode smeargle orgit org-projectile org-present org-pomodoro alert log4e gntp org-download mmm-mode markdown-toc markdown-mode magit-gitflow htmlize helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md evil-magit magit magit-popup git-commit with-editor ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+  ;; Do not write anything past this comment. This is where Emacs will
+  ;; auto-generate custom variable definitions.
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(evil-want-Y-yank-to-eol nil)
+   '(package-selected-packages
+     '(deft ejc-sql direx clomacs parseedn parseclj a sqlformat sqlup-mode xkcd spotify slack emojify circe oauth2 websocket ht helm-spotify-plus multi flyspell-correct-helm flyspell-correct emoji-cheat-sheet-plus company-emoji auto-dictionary toml-mode racer flycheck-rust cargo rust-mode graphviz-dot-mode terraform-mode hcl-mode yasnippet-snippets company-quickhelp helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern company-statistics company-go company-emacs-eclim company-cabal company-c-headers company-anaconda clojure-snippets auto-yasnippet ac-ispell auto-complete stickyfunc-enhance srefactor disaster cmake-mode clang-format tide typescript-mode helm-cider helm-cider-history memoize all-the-icons-dired all-the-icons-gnus all-the-icons-ivy all-the-icons flycheck-gometalinter enh-ruby-mode intero hlint-refactor hindent helm-hoogle haskell-snippets flycheck-haskell company-ghci company-ghc ghc haskell-mode cmm-mode erlang ob-elixir flycheck-mix flycheck-credo alchemist company elixir-mode nginx-mode dockerfile-mode docker tablist docker-tramp org-mime wgrep smex ivy-hydra counsel-projectile counsel swiper ivy org-category-capture dash-functional ghub let-alist sql-indent groovy-mode eclim flycheck-pos-tip pos-tip flycheck-elm flycheck helm-gtags ggtags tern web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode yaml-mode solidity-mode clj-refactor inflections edn paredit peg cider-eval-sexp-fu cider seq queue clojure-mode yapfify xterm-color web-beautify shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements multi-term livid-mode skewer-mode simple-httpd live-py-mode json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc hy-mode helm-pydoc eshell-z eshell-prompt-extras esh-help cython-mode coffee-mode anaconda-mode pythonic rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby go-guru go-eldoc go-mode elm-mode smeargle orgit org-projectile org-present org-pomodoro alert log4e gntp org-download mmm-mode markdown-toc markdown-mode magit-gitflow htmlize helm-gitignore gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md evil-magit magit magit-popup git-commit with-editor ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   ))

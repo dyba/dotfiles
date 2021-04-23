@@ -63,7 +63,7 @@
 	ui = auto
 
 [core]
-	editor = vim -f
+	editor = mvim -f
 	pager = delta # Requires `brew install git-delta`
 
 [delta]
@@ -108,3 +108,12 @@
 
 [init]
 	templatedir = ~/.git_template
+[user]
+	name = Daniel Dyba
+	email = daniel.dyba@gmail.com
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

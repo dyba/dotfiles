@@ -122,3 +122,27 @@ fi
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [[ -f /Users/ddyba/.asdf/installs/nodejs/10.16.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/ddyba/.asdf/installs/nodejs/10.16.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/var/pyenv/versions/miniconda3-4.3.30/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/var/pyenv/versions/miniconda3-4.3.30/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/var/pyenv/versions/miniconda3-4.3.30/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/var/pyenv/versions/miniconda3-4.3.30/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export PATH="/usr/local/opt/curl/bin:$PATH"
+
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+[[ -d $ZSH_CUSTOM/plugins/fzf-tab ]] && source $ZSH_CUSTOM/plugins/fzf-tab/fzf-tab.plugin.zsh

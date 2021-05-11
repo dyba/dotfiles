@@ -99,6 +99,20 @@ curl -o "$(kpsewhich -var-value TEXMFLOCAL)/minted.sty" https://github.com/gpoor
 brew install yapf # Python formatting
 ```
 
+## Ruby
+
+```
+gem install pry
+gem install rb-readline
+gem install awesome_print
+
+gem install pry-theme
+```
+
+## Stow
+
+http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html?round=two
+
 # Ergodox Layout
 
 https://configure.ergodox-ez.com/ergodox-ez/layouts/N4Ya0/latest/0

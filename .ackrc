@@ -1,0 +1,44 @@
+# Always sort files
+--sort-files
+
+# Always use color
+--color
+
+# Don't look in these directories
+--ignore-dir=tmp
+--ignore-dir=log
+--ignore-dir=.gems
+ 
+# Add support for files with custom extensions
+--type-set=slim:match:/html\.slim/
+--type-set=liquid:ext:liquid
+--type-set=haml:match:/html\.haml/
+--type-set=markdown:ext:markdown,md,mdown
+--type-set=clojurescript:ext:cljs
+--type-set=cucumber:ext:feature
+--type-set=rdoc:ext:rdoc
+
+# Search these files by default
+--liquid
+--slim
+--haml
+--dart
+--clojure
+--clojurescript
+--coffeescript
+--css
+--erlang
+--elixir
+--elisp
+--java
+--js
+--json
+--haskell
+--html
+--markdown
+--objc
+--php
+--rake
+--ruby
+--sass
+--yaml

@@ -11,6 +11,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+## Aliases
+alias rb="bundle exec ruby"
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -41,7 +44,6 @@ DISABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
-  git
   kubectl
   zsh-autosuggestions
 )
@@ -50,10 +52,42 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-[ -x "$(command -v rbenv)" ] && eval "$(rbenv init -)"
-[ -x "$(command -v jenv)" ] && eval "$(jenv init -)"
-[ -x "$(command -v exenv)" ] && eval "$(exenv init -)"
-[ -x "$(command -v scmpuff)" ] && eval "$(scmpuff init -s)"
+# The editor to use when opening a bundled gem
+export BUNDLER_EDITOR='mvim'
+
+# Set up rbenv
+# export PATH=$PATH:$HOME/.rbenv/bin
+
+# Set up jenv
+export JENV_ROOT=/usr/local/var/jenv
+
+# Set up exenv
+export EXENV_ROOT=/usr/local/var/exenv
+
+# Add .NET CLI path
+# export PATH=/usr/local/share/dotnet:$PATH
+
+# Set Ansi Colors in iTerm2
+export CLICOLOR=1
+
+# Set colors to match iTerm2 Terminal Colors
+export TERM=xterm-256color
+
+# Java variables
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# Eiffel configuration
+export ISE_EIFFEL=/Users/ddyba/Downloads/Eiffel_14.05
+export ISE_PLATFORM=macosx-x86-64
+
+export EDITOR="vim"
+
+# nvm variables
+export NVM_DIR=~/.nvm
+
+# AWS environment variables
+export AWS_PROFILE=default
+export AWS_DEFAULT_PROFILE=default
 
 # Aliases
 alias prettify_json="json_reformat" # Run 'brew install yajl' to get the `json_reformat` command
@@ -90,28 +124,66 @@ source /usr/local/share/zsh/site-functions/_aws
 # if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
 #   . $LUNCHY_DIR/lunchy-completion.zsh
 # fi
-export PATH="/usr/local/opt/qt/bin:$PATH"
-export PATH="/usr/local/opt/qt/bin:$PATH"
-
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-USER_BASE_PATH=$(python -m site --user-base)
-export PATH=$PATH:$USER_BASE_PATH/bin
-
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-
-[ -n "$(type asdf)" ] && [ -d $HOME/.asdf ] && . $HOME/.asdf/asdf.sh
-[ -n "$(type asdf)" ] && [ -d $HOME/.asdf ] && . $HOME/.asdf/completions/asdf.bash
+# USER_BASE_PATH=$(python -m site --user-base)
+# export PATH=$PATH:$USER_BASE_PATH/bin
 
 # if [ -d "$HOME/Tools/google-cloud-sdk" ]; then
 #     export PATH=$PATH:$HOME/Tools/google-cloud-sdk/bin
 # fi
 
-if [ -d "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]; then
-  . "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-  . "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+# When running tmux in a shell, tmux will reload the .zshrc file and effectively load any path modifications twice
+#
+# See: https://stackoverflow.com/questions/13058578/how-to-prevent-tmux-from-filling-up-the-global-path-variable-with-duplicated-pat/13060475
+# If we're not already inside a TMUX session
+if [[ -z $TMUX ]]; then
+	# NOTE: Unused as of 2021-02-10
+	export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
+
+	# NOTE: Unused as of 2021-02-10
+	export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+	# NOTE: Unused as of 2021-02-10
+	if [ -d "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]; then
+		. "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+		. "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+	fi
+
+	# Installed Haskell scripts get dumped here by cabal
+	# NOTE: Unused since 2021-02-10
+	export PATH=$HOME/.cabal/bin:$PATH
+
+	# NOTE: Unused as of 2012-02-10
+	export PATH="/usr/local/opt/qt/bin:$PATH"
+
+	# NOTE: Unvetted since 2021-02-10
+	# It's likely this was needed at some point for Ruby
+	export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
+	# Use Homebrew's version of curl and not the system default
+	export PATH="/usr/local/opt/curl/bin:$PATH"
+
+	# Golang configuration
+	export GOPATH=$HOME/Code/go
+	export PATH="$GOPATH/bin:$PATH"
+
+	# NOTE: Unvetted since 2021-02-12
+	# Set up pyenv
+	export PYENV_ROOT=/usr/local/var/pyenv
+	export PATH="$PYENV_ROOT/bin:$PATH"
+
+	# My scripts
+	export PATH="$HOME/.scripts/bin:$PATH"
 fi
+
+source $HOME/.dotfiles/scripts/zsh/asdf.zsh
+source $HOME/.dotfiles/scripts/zsh/scmpuff.zsh
+source $HOME/.dotfiles/scripts/zsh/fzf-tab.zsh
+source $HOME/.dotfiles/scripts/zsh/git.zsh
+source $HOME/.dotfiles/scripts/zsh/websites.zsh
+source $HOME/.dotfiles/scripts/zsh/tpm.zsh
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
@@ -125,24 +197,34 @@ fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/var/pyenv/versions/miniconda3-4.3.30/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/local/var/pyenv/versions/miniconda3-4.3.30/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/var/pyenv/versions/miniconda3-4.3.30/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/local/var/pyenv/versions/miniconda3-4.3.30/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# __conda_setup="$('/usr/local/var/pyenv/versions/miniconda3-4.3.30/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/usr/local/var/pyenv/versions/miniconda3-4.3.30/etc/profile.d/conda.sh" ]; then
+#         . "/usr/local/var/pyenv/versions/miniconda3-4.3.30/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/usr/local/var/pyenv/versions/miniconda3-4.3.30/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
 
-export PATH="/usr/local/opt/curl/bin:$PATH"
-
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# NOTE: Unvetted since 2021-02-10
+export SDKMAN_DIR="/Users/ddyba/.sdkman"
+[[ -s "/Users/ddyba/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/ddyba/.sdkman/bin/sdkman-init.sh"
 
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 
-[[ -d $ZSH_CUSTOM/plugins/fzf-tab ]] && source $ZSH_CUSTOM/plugins/fzf-tab/fzf-tab.plugin.zsh
+# Aliases for Work
+[[ $(scutil --get LocalHostName) == 'Daniels-MacBook-Pro-6' ]] && source $HOME/.dotfiles/zsh/work-aliases.zsh
+
+# For asdf completion
+autoload -Uz compinit
+compinit
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform

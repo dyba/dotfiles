@@ -4,8 +4,16 @@
 
 [[ -d $HOME/.dotfiles ]] && DOTFILES_DIR=$HOME/.dotfiles
 
-stow -v --restow --target=$HOME --dir=$DOTFILES_DIR ruby
-stow -v --restow --target=$HOME --dir=$DOTFILES_DIR kitty
-stow -v --restow --target=$HOME --dir=$DOTFILES_DIR zsh
-stow -v --restow --target=$HOME --dir=$DOTFILES_DIR tmux
-stow -v --restow --target=$HOME --dir=$DOTFILES_DIR git
+declare -a PACKAGE_DIRS
+PACKAGE_DIRS=(
+    "ruby"
+    "kitty"
+    "zsh"
+    "tmux"
+    "git"
+)
+declare -r PACKAGE_DIRS
+
+for package in $PACKAGE_DIRS; do
+    stow -v --restow --target=$HOME --dir=$DOTFILES_DIR $package
+done

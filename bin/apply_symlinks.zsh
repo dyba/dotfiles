@@ -7,3 +7,4 @@
 stow -v --restow --target=$HOME --dir=$DOTFILES_DIR ruby
 stow -v --restow --target=$HOME --dir=$DOTFILES_DIR kitty
 stow -v --restow --target=$HOME --dir=$DOTFILES_DIR zsh
+stow -v --restow --target=$HOME --dir=$DOTFILES_DIR tmux

@@ -17,13 +17,14 @@ function install_homebrew() {
 
 install_homebrew
 
-brew cask install alacritty
-
 brew tap homebrew/cask-fonts
-brew cask install font-fira-code
 
 declare -a FORMULAS
 FORMULAS=(
+    "alacritty"
+
+    "font-fira-code"
+
     # Stow helps manage dotfiles
     "stow"
 
@@ -45,7 +46,7 @@ FORMULAS=(
     "fzf"
     "git-gui"
 
-    "pg_formatter"
+    "pgformatter"
     "pgcli"
 )
 declare -r FORMULAS

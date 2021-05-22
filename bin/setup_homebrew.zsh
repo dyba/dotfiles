@@ -48,6 +48,8 @@ FORMULAS=(
 
     "pgformatter"
     "pgcli"
+
+    "kitty"
 )
 declare -r FORMULAS
 

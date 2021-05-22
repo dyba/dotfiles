@@ -184,6 +184,7 @@ source $HOME/.dotfiles/scripts/zsh/fzf-tab.zsh
 source $HOME/.dotfiles/scripts/zsh/git.zsh
 source $HOME/.dotfiles/scripts/zsh/websites.zsh
 source $HOME/.dotfiles/scripts/zsh/tpm.zsh
+source $HOME/.dotfiles/scripts/zsh/functions.zsh
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`

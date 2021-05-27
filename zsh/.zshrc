@@ -46,6 +46,7 @@ DISABLE_CORRECTION="true"
 plugins=(
   kubectl
   zsh-autosuggestions
+  asdf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -178,7 +179,6 @@ if [[ -z $TMUX ]]; then
 	export PATH="$HOME/.scripts/bin:$PATH"
 fi
 
-source $HOME/.dotfiles/scripts/zsh/asdf.zsh
 source $HOME/.dotfiles/scripts/zsh/scmpuff.zsh
 source $HOME/.dotfiles/scripts/zsh/fzf-tab.zsh
 source $HOME/.dotfiles/scripts/zsh/git.zsh
@@ -223,9 +223,11 @@ export SDKMAN_DIR="/Users/ddyba/.sdkman"
 # Aliases for Work
 [[ $(scutil --get LocalHostName) == 'Daniels-MacBook-Pro-6' ]] && source $HOME/.dotfiles/zsh/work-aliases.zsh
 
-# For asdf completion
-autoload -Uz compinit
-compinit
+# completion for kitty
+if command -v kitty &> /dev/null
+then
+	kitty + complete setup zsh | source /dev/stdin
+fi
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform

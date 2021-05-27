@@ -50,6 +50,9 @@ FORMULAS=(
     "pgcli"
 
     "kitty"
+
+    # Used with spacemacs
+    "golangci-lint"
 )
 declare -r FORMULAS
 

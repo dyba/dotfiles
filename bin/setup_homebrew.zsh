@@ -47,6 +47,12 @@ function is_brew_installed {
     fi
 }
 
+function is_brew_x86_installed {
+    readonly formula=${1:?"Must provide name of the formula"}
+
+    arch -x86_64 /usr/local/bin/brew list -1 | sed -E '/^=$/,//d' | grep $formula
+}
+
 install_homebrew
 
 brew tap homebrew/cask-fonts
@@ -123,7 +129,7 @@ X86_FORMULAS=(
 declare -r X86_FORMULAS
 
 for formula in $X86_FORMULAS; do
-    is_brew_installed $formula
+    is_brew_x86_installed $formula &> /dev/null
     if [ $? -eq 0 ]; then
         echo "${formula} already installed."
     else

@@ -90,6 +90,7 @@ FORMULAS=(
     "kitty"
 
     "macvim"
+    "macdown"
 
     # Used with spacemacs
     "golangci-lint"

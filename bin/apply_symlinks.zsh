@@ -11,6 +11,7 @@ PACKAGE_DIRS=(
     "zsh"
     "tmux"
     "git"
+    "spacemacs"
 )
 declare -r PACKAGE_DIRS
 

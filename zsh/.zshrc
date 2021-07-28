@@ -229,7 +229,9 @@ then
 	kitty + complete setup zsh | source /dev/stdin
 fi
 
+# Alt + <- moves backward a word
 bindkey "^[[1;3D" backward-word
+# Alt + -> moves forward a word
 bindkey "^[[1;3C" forward-word
 
 autoload -U +X bashcompinit && bashcompinit

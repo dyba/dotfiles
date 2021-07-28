@@ -229,5 +229,8 @@ then
 	kitty + complete setup zsh | source /dev/stdin
 fi
 
+bindkey "^[[1;3D" backward-word
+bindkey "^[[1;3C" forward-word
+
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform

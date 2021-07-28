@@ -112,7 +112,7 @@ alias mdown="open -a /Applications/MacDown.app"
 [ -x "$(command -v nvm)" ] && . "/usr/local/opt/nvm/nvm.sh"
 
 # Enable command completion for awscli
-source /usr/local/share/zsh/site-functions/_aws
+[ -x "$(command -v aws)" ] && source /usr/local/share/zsh/site-functions/_aws
 
 # Enable powerline daemon
 # . /Users/ddyba/.local/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh

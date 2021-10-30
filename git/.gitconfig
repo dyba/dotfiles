@@ -64,7 +64,13 @@
 
 [core]
 	editor = mvim -f
-	pager = delta # Requires `brew install git-delta`
+
+# Requires `brew install git-delta`
+[pager]
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
 
 [delta]
 	features = side-by-side unobtrusive-line-numbers decorations
@@ -83,7 +89,7 @@
 	prompt = false
 
 [interactive]
-	diffFilter = delta --color-only # Requires `brew install git-delta`
+	diffFilter = delta --color-only --features=interactive # Requires `brew install git-delta`
 
 [push]
 	default = simple

@@ -13,6 +13,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 ## Aliases
 alias rb="bundle exec ruby"
+alias ibrew="/usr/local/bin/brew"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -56,17 +57,11 @@ source $ZSH/oh-my-zsh.sh
 # The editor to use when opening a bundled gem
 export BUNDLER_EDITOR='mvim'
 
-# Set up rbenv
-# export PATH=$PATH:$HOME/.rbenv/bin
-
 # Set up jenv
 export JENV_ROOT=/usr/local/var/jenv
 
 # Set up exenv
 export EXENV_ROOT=/usr/local/var/exenv
-
-# Add .NET CLI path
-# export PATH=/usr/local/share/dotnet:$PATH
 
 # Set Ansi Colors in iTerm2
 export CLICOLOR=1
@@ -128,41 +123,11 @@ alias mdown="open -a /Applications/MacDown.app"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# USER_BASE_PATH=$(python -m site --user-base)
-# export PATH=$PATH:$USER_BASE_PATH/bin
-
-# if [ -d "$HOME/Tools/google-cloud-sdk" ]; then
-#     export PATH=$PATH:$HOME/Tools/google-cloud-sdk/bin
-# fi
-
 # When running tmux in a shell, tmux will reload the .zshrc file and effectively load any path modifications twice
 #
 # See: https://stackoverflow.com/questions/13058578/how-to-prevent-tmux-from-filling-up-the-global-path-variable-with-duplicated-pat/13060475
 # If we're not already inside a TMUX session
 if [[ -z $TMUX ]]; then
-	# NOTE: Unused as of 2021-02-10
-	export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
-
-	# NOTE: Unused as of 2021-02-10
-	export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-
-	# NOTE: Unused as of 2021-02-10
-	if [ -d "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]; then
-		. "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-		. "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-	fi
-
-	# Installed Haskell scripts get dumped here by cabal
-	# NOTE: Unused since 2021-02-10
-	export PATH=$HOME/.cabal/bin:$PATH
-
-	# NOTE: Unused as of 2012-02-10
-	export PATH="/usr/local/opt/qt/bin:$PATH"
-
-	# NOTE: Unvetted since 2021-02-10
-	# It's likely this was needed at some point for Ruby
-	export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-
 	# Use Homebrew's version of curl and not the system default
 	export PATH="/usr/local/opt/curl/bin:$PATH"
 
@@ -170,13 +135,6 @@ if [[ -z $TMUX ]]; then
 	export GOPATH=$HOME/Code/go
 	export PATH="$GOPATH/bin:$PATH"
 
-	# NOTE: Unvetted since 2021-02-12
-	# Set up pyenv
-	export PYENV_ROOT=/usr/local/var/pyenv
-	export PATH="$PYENV_ROOT/bin:$PATH"
-
-	# My scripts
-	export PATH="$HOME/.scripts/bin:$PATH"
 fi
 
 source $HOME/.dotfiles/scripts/zsh/scmpuff.zsh
@@ -184,6 +142,7 @@ source $HOME/.dotfiles/scripts/zsh/fzf-tab.zsh
 source $HOME/.dotfiles/scripts/zsh/git.zsh
 source $HOME/.dotfiles/scripts/zsh/websites.zsh
 source $HOME/.dotfiles/scripts/zsh/tpm.zsh
+source $HOME/.dotfiles/scripts/zsh/emacs.zsh
 source $HOME/.dotfiles/scripts/zsh/functions.zsh
 
 # tabtab source for serverless package

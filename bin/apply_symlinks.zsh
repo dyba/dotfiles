@@ -8,6 +8,7 @@ DOTFILES_DIR=$HOME/.dotfiles
 declare -a PACKAGE_DIRS
 PACKAGE_DIRS=(
     "ruby"
+    "haskell"
     "kitty"
     "zsh"
     "tmux"

@@ -17,7 +17,7 @@ PACKAGE_DIRS=(
 declare -r PACKAGE_DIRS
 
 for package in $PACKAGE_DIRS; do
-    stow -v --restow --target=$HOME --dir=$DOTFILES_DIR $package
+    stow -v --restow --target=$HOME --dir=$DOTFILES_DIR --ignore='.*\.(md)' $package
 done
 
 stow -v --restow --target=$HOME --dir=$DOTFILES_DIR --ignore='.*\.(zsh|md)' spacemacs

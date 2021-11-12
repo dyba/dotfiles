@@ -1,1 +1,25 @@
-:set prompt "λ> "
+-- Modify the prompt using 8-bit 256 colors
+-- https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
+:set prompt "\ESC[38;5;208m\STXλ>\ESC[m\STX "
+:set prompt-cont "\ESC[38;5;213m\STX|>\ESC[m\STX "
+
+-- Emit warnings of tabs instead of spaces in the source code
+:set -fwarn-tabs
+-- Warn about libraries imported without being used
+:set -fwarn-unused-imports
+-- Warn on duplicate names in nested bindings
+:set -fwarn-name-shadowing
+-- Warn about top-level missing type signatures
+:set -fwarn-missing-signatures
+-- Warn on non-exhaustive patterns
+:set -fwarn-incomplete-patterns
+
+-- Use pretty-simple package for pretty-printing
+:set -interactive-print=Text.Pretty.Simple.pPrint
+:set -package pretty-simple
+
+-- Better errors
+:set -ferror-spans -freverse-errors -fprint-expanded-synonyms
+
+-- Show types of evaluated expressions
+:set +t

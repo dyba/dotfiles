@@ -1,0 +1,42 @@
+# Haskell Configuration
+
+Install pretty-simple globally:
+
+```
+stack ghci --package pretty-simple
+```
+
+or
+
+```
+cabal repl --build-depends pretty-simple
+```
+
+Other dependencies:
+
+```
+stack install hlint
+```
+
+## GHCi Options
+
+```
+stack ghci --ghci-options "-interactive-print=Text.Pretty.Simple.pPrint" --package pretty-simple 
+```
+
+This will take over the `print` command and pretty-print globally.
+
+## Dependencies
+
+- [pretty-simple](https://hackage.haskell.org/package/pretty-simple)
+
+## Multiline Expressions
+
+Use the `:{` `:}` syntax:
+
+```
+:{
+x :: [Char]
+x = "Hello World"
+:}
+```

@@ -16,6 +16,14 @@ Other dependencies:
 
 ```
 stack install hlint
+stack install hoogle
+```
+
+## Hoogle
+You need to run the following command before you can Hoogle:
+
+```
+hoogle generate
 ```
 
 ## GHCi Options

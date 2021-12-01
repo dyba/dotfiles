@@ -23,3 +23,6 @@
 
 -- Show types of evaluated expressions
 :set +t
+
+-- Enable search functionality
+:def hoogle \s -> return $ ":!hoogle --count=25 \"" ++ s ++ "\""

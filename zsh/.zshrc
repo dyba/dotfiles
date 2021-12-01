@@ -135,6 +135,7 @@ if [[ -z $TMUX ]]; then
 	export GOPATH=$HOME/Code/go
 	export PATH="$GOPATH/bin:$PATH"
 
+	export PATH="$HOME/.local/bin:$PATH"
 fi
 
 source $HOME/.dotfiles/scripts/zsh/scmpuff.zsh

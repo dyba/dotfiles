@@ -10,5 +10,5 @@
  :repl
  {:dependencies [[org.clojure/tools.nrepl "0.2.12"]
                  [alembic "0.3.2"]]
-  :plugins [[refactor-nrepl "2.4.0"]
-            [cider/cider-nrepl "0.18.0"]]}}
+  :plugins [[refactor-nrepl "3.1.0"]
+            [cider/cider-nrepl "0.25.9"]]}}

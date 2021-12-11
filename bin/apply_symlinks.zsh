@@ -13,6 +13,7 @@ PACKAGE_DIRS=(
     "zsh"
     "tmux"
     "git"
+    "clojure"
 )
 declare -r PACKAGE_DIRS
 

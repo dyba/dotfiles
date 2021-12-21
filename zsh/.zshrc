@@ -123,20 +123,21 @@ alias mdown="open -a /Applications/MacDown.app"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# When running tmux in a shell, tmux will reload the .zshrc file and effectively load any path modifications twice
+# TODO: Is this still true?
+# > When running tmux in a shell, tmux will reload the .zshrc file and effectively load any path modifications twice
 #
 # See: https://stackoverflow.com/questions/13058578/how-to-prevent-tmux-from-filling-up-the-global-path-variable-with-duplicated-pat/13060475
-# If we're not already inside a TMUX session
-if [[ -z $TMUX ]]; then
-	# Use Homebrew's version of curl and not the system default
-	export PATH="/usr/local/opt/curl/bin:$PATH"
 
-	# Golang configuration
-	export GOPATH=$HOME/Code/go
-	export PATH="$GOPATH/bin:$PATH"
+# Use Homebrew's version of curl and not the system default
+export PATH="/usr/local/opt/curl/bin:$PATH"
 
-	export PATH="$HOME/.local/bin:$PATH"
-fi
+# Golang configuration
+export GOPATH=$HOME/Code/go
+export PATH="$GOPATH/bin:$PATH"
+
+export PATH="$HOME/.local/bin:$PATH"
+
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
 
 source $HOME/.dotfiles/scripts/zsh/scmpuff.zsh
 source $HOME/.dotfiles/scripts/zsh/fzf-tab.zsh
@@ -196,3 +197,6 @@ bindkey "^[[1;3C" forward-word
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
+
+# Eliminate duplicates from the PATH array variable
+typeset -U PATH

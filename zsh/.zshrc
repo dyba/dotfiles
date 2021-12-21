@@ -179,4 +179,8 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
 # Eliminate duplicates from the PATH array variable
-typeset -U PATH
+# 
+# This command addresses a common problem when running tmux. Note that the
+# casing of the `path` environment variable is important; it must be in
+# lowercase.
+typeset -aU path

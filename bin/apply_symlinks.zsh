@@ -7,6 +7,7 @@ DOTFILES_DIR=$HOME/.dotfiles
 
 declare -a PACKAGE_DIRS
 PACKAGE_DIRS=(
+    "elixir"
     "ruby"
     "haskell"
     "kitty"

@@ -178,9 +178,11 @@ bindkey "^[[1;3C" forward-word
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
+[ -f "/Users/ddyba/.ghcup/env" ] && source "/Users/ddyba/.ghcup/env" # ghcup-env
+
 # Eliminate duplicates from the PATH array variable
 # 
 # This command addresses a common problem when running tmux. Note that the
 # casing of the `path` environment variable is important; it must be in
-# lowercase.
+# lowercase. It must also come at the very end of this file.
 typeset -aU path

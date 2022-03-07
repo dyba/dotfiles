@@ -200,7 +200,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Fira Mono for Powerline"
-                               :size 16
+                               :size 18
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -480,6 +480,9 @@ you should place your code here."
 
   ;; Flychecker gometalinter
   (setq flycheck-gometalinter-deadline "10s")
+
+  ;; elm
+  (add-hook 'elm-mode-hook 'elm-format-on-save-mode)
 
   ;; sqlup-mode
   (add-hook 'sql-mode-hook 'sqlup-mode)

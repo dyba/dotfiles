@@ -1,4 +1,4 @@
-# Pry.config.history_file = "~/.pry_history"
+Pry.config.history_file = "~/.pry_history"
 
 if defined?(PryByebug)
   Pry.commands.alias_command 'c', 'continue'
@@ -23,6 +23,7 @@ if defined?(RbReadline)
   # first awk command trims leading and trailing whitespace to reduce matches
   # tiebreak gives precedence to the most recent history
   def RbReadline.rl_reverse_search_history(sign, key)
+    # Should check for presence of fzf command before you run this
     rl_insert_text `tac ~/.pry_history | awk '{$1=$1};1' | awk '!x[$0]++' | fzf --tiebreak=index | tr '\n' ' '`
   end
 end

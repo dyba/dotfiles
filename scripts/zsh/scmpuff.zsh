@@ -5,4 +5,4 @@ if [ ! -x "$(command -v scmpuff)" ]; then
     brew install scmpuff
 fi
 
-# eval "$(scmpuff init -s)"
+eval "$(scmpuff init -s)"

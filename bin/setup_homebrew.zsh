@@ -61,6 +61,10 @@ declare -a FORMULAS
 FORMULAS=(
     "alacritty"
 
+    "awscli"
+
+    "asdf"
+
     "font-fira-code"
 
     # Stow helps manage dotfiles
@@ -96,6 +100,8 @@ FORMULAS=(
     "golangci-lint"
 
     "gpg-suite"
+
+    "graphviz"
 )
 declare -r FORMULAS
 

@@ -4,17 +4,8 @@ My custom dotfiles. The following must be installed depending on what you decide
 
 ## Prerequisites
 
-* Download Homebrew
-
-```
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
-
-* Install Oh My Zsh
-
-```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```
+- Install Homebrew: [bin/setup\_homebrew.zsh](bin/setup_homebrew.zsh)
+- Install Oh My Zsh: [bin/oh-my-zsh/install.zsh](bin/oh-my-zsh/install.zsh)
 
 * [Generate Your SSH Key](https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 

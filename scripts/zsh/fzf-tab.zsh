@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 if [ ! -d $ZSH_CUSTOM/plugins/fzf-tab ]; then
     echo "Zsh plugin fzf-tab not found. Cloning into '$ZSH_CUSTOM/plugins'"

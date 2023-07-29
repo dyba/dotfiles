@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 if [ ! -x "$(command -v scmpuff)" ]; then
     echo "scmpuff not found. Installing with brew..."

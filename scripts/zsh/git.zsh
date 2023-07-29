@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 alias gai="git add -i"
 alias gca="git commit --amend"

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # Load environment variables defined inside a .env file
 # Environment variables must be defined on each line using the format:

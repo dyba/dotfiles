@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 TPM_PLUGIN_DIR=~/.tmux/plugins/tpm
 

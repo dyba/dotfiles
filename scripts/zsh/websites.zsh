@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # Opens Chrome and navigates to airnow.gov to check the air quality in
 # Los Angeles

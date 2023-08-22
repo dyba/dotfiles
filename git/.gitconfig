@@ -47,7 +47,8 @@
 	mg = merge
 	pl = pull
 	ps = push
-	plom = pull origin master
+	plo = pull origin
+	pso = push origin
 	r = remote
 	rv = remote -v
 	s = status

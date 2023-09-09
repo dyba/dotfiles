@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+fatal () {
+	echo "$0": fatal error: "$@" >&2
+	exit 1
+}
+
+if [ $# = 0 ]
+then
+	# Messages go to standard error
+	fatal "not enough arguments"
+	exit 1
+fi
+
+# Does the theme exist?
+kitty-themes | grep $1
+
+if [ $? != 0 ]
+then
+	fatal "theme not found"
+fi
+
+ln -sf ~/.config/kitty/kitty-themes/themes/$1.conf ~/.config/kitty/theme.conf

@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+find ~/.config/kitty/kitty-themes -name '*.conf' -type f -exec basename {} .conf \; | sort

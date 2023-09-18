@@ -3,3 +3,4 @@ tmp/
 *~
 zsh/work-aliases.zsh
 zsh/*.work.zsh
+*.bak

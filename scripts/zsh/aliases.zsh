@@ -5,3 +5,6 @@
 # Also available: Shift + Command + '.'
 alias AllFilesTrue='defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder'
 alias AllFilesFalse='defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder'
+
+# To display git delta themes
+alias delta-themes='bat-themes'

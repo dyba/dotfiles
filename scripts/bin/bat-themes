@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+bat --list-themes | sed -E "s/^Theme: (\s+)/\1/" 

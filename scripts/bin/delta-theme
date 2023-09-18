@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+# TODO: Check for no argument when called
+
+bat-themes | grep $1
+
+if [ $# = 0 ]
+then
+	fatal "unable to find theme"
+fi
+
+sed -I .bak -e "s/syntax-theme = .*/syntax-theme = $1/" ~/.dotfiles/git/.gitconfig
